@@ -26,9 +26,19 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
+        baseUrl: "https://editor.patrizialutz.tech",
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://editor.patrizialutz.tech/graphql`,
+        useACF: true,
+        verbose: true,
+        debug: {
+          preview: true,
+          graphql: {
+            showQueryVarsOnError: true,
+            showQueryOnError: true,
+          },
+        },
       },
     },
 
@@ -53,17 +63,20 @@ module.exports = {
      */
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sass`,
 
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter WordPress Blog`,
-        short_name: `GatsbyJS & WP`,
+        name: `Patrizia Lutz - WordPress Developer`,
+        short_name: `Patrizia Lutz`,
+        description: `Web Developer specializing in WordPress, and free and open-source technology.`,
+        lang: `en`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
+        theme_color: `#0b4f6c`,
+        display: `browser`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
