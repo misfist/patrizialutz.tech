@@ -7,6 +7,11 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `Patrizia Lutz - WordPress Developer`,
+    siteUrl: `https://patrizialutz.tech`,
+    description: `Web Developer specializing in WordPress, and free and open-source technology.`,
+  },
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *
@@ -20,18 +25,21 @@ module.exports = {
        * to your WordPress site.
        *
        * visit the plugin docs to learn more
-       * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-source-wordpress/README.md
+       * https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress
        *
        */
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        baseUrl: "https://editor.patrizialutz.tech",
         url:
           process.env.WPGRAPHQL_URL ||
           `https://editor.patrizialutz.tech/graphql`,
-        useACF: true,
+        schema: {
+          requestConcurrency: 6, // currently set to 15
+          previewRequestConcurrency: 2, // currently set to 5
+        },
         verbose: true,
+        verboseOutput: true,
         debug: {
           preview: true,
           graphql: {
@@ -63,8 +71,6 @@ module.exports = {
      */
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`,
-
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
@@ -77,7 +83,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#0b4f6c`,
         display: `browser`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/sneaky-cat.png`,
       },
     },
 
@@ -91,3 +97,5 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 }
+
+

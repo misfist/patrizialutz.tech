@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
+import Bio from "./bio"
+import Menu from "./menu"
 
 const Layout = ({ isHomePage, children }) => {
   const {
@@ -30,6 +32,9 @@ const Layout = ({ isHomePage, children }) => {
             {title}
           </Link>
         )}
+        <Bio />
+
+        <Menu />
       </header>
 
       <main>{children}</main>

@@ -3,7 +3,7 @@ const chunk = require(`lodash/chunk`)
 
 // This is a simple debugging tool
 // dd() will prettily dump to the terminal and kill the process
-// const { dd } = require(`dumper.js`)
+const { dd } = require(`dumper.js`)
 
 /**
  * exports.createPages is a built-in Gatsby Node API.
