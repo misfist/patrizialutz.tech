@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@wordpress/block-library": "^2.27.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.9.0",
@@ -20,6 +21,7 @@
     "gatsby-source-wordpress": "^4.0.0",
     "gatsby-transformer-sharp": "^2.9.0",
     "html-react-parser": "^1.1.1",
+    "jquery": "^3.5.1",
     "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -49,5 +51,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "browser": {
+    "fs": false
   }
 }

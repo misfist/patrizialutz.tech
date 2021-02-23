@@ -16,6 +16,7 @@ const Projects = () => {
         title
         content
         link
+        slug
         featuredImage {
           node {
             title
@@ -59,7 +60,7 @@ const Projects = () => {
 
             return (
               <article
-                key={post.uri}
+                key={post.slug}
                 id={post.slug}
                 className="post-list-item"
                 itemScope

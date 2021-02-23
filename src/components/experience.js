@@ -26,6 +26,7 @@ const Experience = () => {
             location
             startDate
           }
+          slug
           content
           title
           location
@@ -66,7 +67,11 @@ const Experience = () => {
             // }
 
             return (
-              <article id="project-freelance-web-developer" className="">
+              <article
+                key={post.slug}
+                id={post.slug}
+                className=""
+              >
                 <header className="entry-header">
                   <h4 className="job-company">
                     <i className="fas fa-external-link-alt"></i>
