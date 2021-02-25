@@ -4,7 +4,7 @@
  *
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
-import React from "react"
+import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 // import { jQuery as $ } from 'jquery'
@@ -20,19 +20,37 @@ const Contact = () => {
   }
   `)
 
-  if ( typeof document !== 'undefined' ) {
+  useEffect(() => {
+    console.log( 'useEffect' )
+
     const wpcf7El = document.querySelector( '.wpcf7-form' );
     const submit = wpcf7El.querySelector( 'input.wpcf7-submit' );
- 
-    // console.log( dotenv );
-    if( typeof submit !== 'undefined' ) {
-      submit.addEventListener( 'click', function( event ) {
-        event.preventDefault();
-        submitForm();
-      }, false );
-    }
+    const fieldEls = document.querySelectorAll( '.wpcf7-form-control' );
+    const fields = Array.from( fieldEls );
 
-  }
+    fields.map( field => {
+      field.removeAttribute( 'value' );
+    } );
+ 
+    submit.addEventListener( 'click', function( event ) {
+      event.preventDefault();
+      submitForm();
+    }, false );
+  })
+
+  // if ( typeof document !== 'undefined' ) {
+  //   const wpcf7El = document.querySelector( '.wpcf7-form' );
+  //   const submit = wpcf7El.querySelector( 'input.wpcf7-submit' );
+ 
+  //   // console.log( dotenv );
+  //   if( typeof submit !== 'undefined' ) {
+  //     submit.addEventListener( 'click', function( event ) {
+  //       event.preventDefault();
+  //       submitForm();
+  //     }, false );
+  //   }
+
+  // }
   return (
     <section id="contact" className="section section__contact">
       <h2 className="section-title">{ parse( data.wpPage.title ) }</h2>
@@ -44,21 +62,32 @@ const Contact = () => {
 
 const submitForm = () => {
   const wpcf7El = document.querySelector( '.wpcf7-form' );
-  const formData = new FormData( wpcf7El );
-  const entries = formData.entries();
-  const formID = entries._wpcf7;
-  console.log( formID );
 
-  const apiURL = `${process.env.REST_API_URL}/contact-form-7/v1/contact-forms/${formID}/feedback/`;
+  const formData = new FormData();
+  formData.append("sender-name", "Pea");
+  formData.append("[sender-name]", "Pea");
+  formData.append("sender-email", "pea@misfist.com");
+  formData.append("sender-subject", "Testing");
+  formData.append("sender-message", "Will this thing ever work?");
 
-  // const data = new FormData();
-  // data.append("sender-name", "Pea");
-  // data.append("sender-email", "pea@misfist.com");
-  // data.append("sender-subject", "Testing");
-  // data.append("sender-message", "Will this thing ever work?");
-
+  // fetch("https://editor.patrizialutz.tech/wp-json/contact-form-7/v1/contact-forms/983/feedback/", {
+  //   "method": "POST",
+  //   "headers": {
+  //     "Content-Type": "multipart/form-data",
+  //     // "Content-Type": "application/json",
+  //     "Authorization": "Basic " + btoa( 'api_user' + ':' + '9GIc Ux2Z yELL 7vZC GlJ5 zOfa' ),
+  //   },
+  //   "body": { 'sender-name': 'Pea' }
+  // })
+  // .then(response => {
+  //   console.log(response);
+  // })
+  // .catch(err => {
+  //   console.error(err);
+  // });
+ 
   const xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
+  // xhr.withCredentials = true;
 
   xhr.addEventListener( "readystatechange", function () {
     if ( this.readyState === this.DONE ) {
@@ -66,64 +95,28 @@ const submitForm = () => {
     }
   });
 
-  // Define what happens on successful data submission
-  xhr.addEventListener( 'load', function( event ) {
-    alert( 'Yeah! Data sent and response loaded.' );
-    console.log( xhr.response );
-  } );
+  // // Define what happens on successful data submission
+  // xhr.addEventListener( 'load', function( event ) {
+  //   console.log( event );
+  //   console.log( xhr.response );
+  // } );
 
-  // Define what happens in case of error
-  xhr.addEventListener( 'error', function( event ) {
-    alert( 'Oops! Something went wrong.' );
-    console.error( xhr.response );
-  } );
+  // // Define what happens in case of error
+  // xhr.addEventListener( 'error', function( event ) {
+  //   console.error( 'Oops! Something went wrong.' );
+  //   console.error( event );
+  // } );
 
-  xhr.open( "POST", `https://editor.patrizialutz.tech/json/contact-form-7/v1/contact-forms/983/feedback/` );
+  xhr.open( "POST", `https://editor.patrizialutz.tech/wp-json/contact-form-7/v1/contact-forms/983/feedback/` );
   xhr.setRequestHeader( "Content-Type", "multipart/form-data" );
-  xhr.setRequestHeader( "Authorization", "Basic " + btoa( process.env.APPLICATION_PASSWORD_USER + ":" + process.env.APPLICATION_PASSWORD_USER ) );
+  xhr.setRequestHeader( "Authorization", "Basic " + btoa( 'api_user' + ':' + '9GIc Ux2Z yELL 7vZC GlJ5 zOfa' ) );
 
   xhr.send( formData );
-  
-  // $.ajax({
-  //   url: `${process.env.REST_API_URL}/contact-form-7/v1/contact-forms/983/feedback/`,
-  //   method: "POST",
-  //   crossDomain: true,
-  //   headers: {
-  //     "Authorization": "Basic " + btoa( process.env.APPLICATION_PASSWORD_USER + ":" + process.env.APPLICATION_PASSWORD_USER )
-  //   },
-  //   data: formData
-  // })
-  // .done( response => {
-  //   console.log( response );
-  // })
-  // .fail( error => {
-  //   console.error( error );
-  // })
-  // .always( response => {
-  //   console.log( response );
-  // });
 
   // formData.append("sender-name", "Pea-from site");
   // formData.append("sender-email", "pea@misfist.com");
   // formData.append("sender-subject", "Testing from site");
   // formData.append("sender-message", "Will this thing ever work when I send from Gatsby site?");
-
-  // axios({
-  //   method: 'post',
-  //   url: `https://editor.patrizialutz.tech/json/contact-form-7/v1/contact-forms/983/feedback/`,
-  //   data: formData,
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data'
-  //   }
-  // })
-  //   .then(response => {
-  //     // actions taken when submission goes OK
-  //     console.log( response );
-  //   })
-  //   .catch(error => {
-  //     // actions taken when submission goes wrong
-  //     console.error( error );
-  //   })
 
   // fetch( `https://editor.patrizialutz.tech/json/contact-form-7/v1/contact-forms/983/feedback/`, {
   //   "method": "POST",
