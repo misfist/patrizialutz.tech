@@ -1,0 +1,27 @@
+.global-header {
+    padding: 0;
+    margin: 0;
+    max-width: $site__max-width;
+
+    /* Background Image */
+
+    background-color: $color__primary;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+  
+.main-heading {
+    font-size: var(--size__font-7);
+    margin: 0 auto;
+    max-width: $site__width_2x-large;
+    padding: 0 $size__spacing-3;
+}
+
+.site-title {
+    margin-top: 0;
+    padding-top: $size__spacing-6;
+
+    font-size: map-get( $font__sizes, largest );
+}

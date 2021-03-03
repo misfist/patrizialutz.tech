@@ -27,7 +27,7 @@
   }
   
   footer {
-    padding: var(--spacing-6) var(--spacing-0);
+    padding: var(--size__spacing-6) var(--size__spacing-0);
   }
   
   hr {
@@ -45,8 +45,8 @@
   h5,
   h6 {
     font-family: var(--font__headings);
-    margin-top: var(--spacing-12);
-    margin-bottom: var(--spacing-6);
+    margin-top: var(--size__spacing-12);
+    margin-bottom: var(--size__spacing-6);
     line-height: var(--font__line-height-tight);
     letter-spacing: -0.025em;
   }
@@ -106,52 +106,52 @@
     line-height: var(--font__line-height-relaxed);
     --baseline-multiplier: 0.179;
     --x-height-multiplier: 0.35;
-    margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
-    padding: var(--spacing-0);
+    margin: var(--size__spacing-0) var(--size__spacing-0) var(--size__spacing-8) var(--size__spacing-0);
+    padding: var(--size__spacing-0);
   }
   
   ul,
   ol {
-    margin-left: var(--spacing-0);
-    margin-right: var(--spacing-0);
-    padding: var(--spacing-0);
-    margin-bottom: var(--spacing-8);
+    margin-left: var(--size__spacing-0);
+    margin-right: var(--size__spacing-0);
+    padding: var(--size__spacing-0);
+    margin-bottom: var(--size__spacing-8);
     list-style-position: outside;
     list-style-image: none;
   }
   
   ul li,
   ol li {
-    padding-left: var(--spacing-0);
-    margin-bottom: calc(var(--spacing-8) / 2);
+    padding-left: var(--size__spacing-0);
+    margin-bottom: calc(var(--size__spacing-8) / 2);
   }
   
   li > p {
-    margin-bottom: calc(var(--spacing-8) / 2);
+    margin-bottom: calc(var(--size__spacing-8) / 2);
   }
   
   li *:last-child {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: var(--size__spacing-0);
   }
   
   li > ul {
-    margin-left: var(--spacing-8);
-    margin-top: calc(var(--spacing-8) / 2);
+    margin-left: var(--size__spacing-8);
+    margin-top: calc(var(--size__spacing-8) / 2);
   }
   
   blockquote {
     color: var(--color__text-light);
-    margin-left: calc(-1 * var(--spacing-6));
-    margin-right: var(--spacing-8);
-    padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
-    border-left: var(--spacing-1) solid var(--color__primary);
+    margin-left: calc(-1 * var(--size__spacing-6));
+    margin-right: var(--size__spacing-8);
+    padding: var(--size__spacing-0) var(--size__spacing-0) var(--size__spacing-0) var(--size__spacing-6);
+    border-left: var(--size__spacing-1) solid var(--color__primary);
     font-size: var(--size__font-2);
     font-style: italic;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--size__spacing-8);
   }
   
   blockquote > :last-child {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: var(--size__spacing-0);
   }
   
   blockquote > ul,
@@ -161,7 +161,7 @@
   
   table {
     width: 100%;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--size__spacing-8);
     border-collapse: collapse;
     border-spacing: 0.25rem;
   }
@@ -185,42 +185,34 @@
   /* Custom classes */
   
   .global-wrapper {
-    margin: var(--spacing-0) auto;
-    max-width: var(--maxWidth-wrapper);
-    padding: var(--spacing-10) var(--spacing-5);
+    margin: 0;
+    max-width: $site__max-width;
+    // padding: var(--size__spacing-10) var(--size__spacing-5);
   }
   
   .global-wrapper[data-is-root-path="true"] .bio {
-    margin-bottom: var(--spacing-20);
+    margin-bottom: var(--size__spacing-20);
   }
   
-  .global-header {
-    margin-bottom: var(--spacing-12);
-  }
-  
-  .main-heading {
-    font-size: var(--size__font-7);
-    margin: 0;
-  }
-  
+
   .post-list-item {
-    margin-bottom: var(--spacing-8);
-    margin-top: var(--spacing-8);
+    margin-bottom: var(--size__spacing-8);
+    margin-top: var(--size__spacing-8);
   }
   
   .post-list-item p {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: var(--size__spacing-0);
   }
   
   .post-list-item h2 {
     font-size: var(--size__font-4);
     color: var(--color__primary);
-    margin-bottom: var(--spacing-2);
-    margin-top: var(--spacing-0);
+    margin-bottom: var(--size__spacing-2);
+    margin-top: var(--size__spacing-0);
   }
   
   .post-list-item header {
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--size__spacing-4);
   }
   
   .header-link-home {
@@ -232,23 +224,23 @@
   
   .bio {
     display: flex;
-    margin-bottom: var(--spacing-16);
+    margin-bottom: var(--size__spacing-16);
   }
   
   .bio p {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: var(--size__spacing-0);
   }
   
   .bio-avatar {
-    margin-right: var(--spacing-4);
-    margin-bottom: var(--spacing-0);
+    margin-right: var(--size__spacing-4);
+    margin-bottom: var(--size__spacing-0);
     max-width: 80px;
     height: auto;
     border-radius: 100%;
   }
   
   .blog-post header h1 {
-    margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+    margin: var(--size__spacing-0) var(--size__spacing-0) var(--size__spacing-4) var(--size__spacing-0);
   }
   
   .blog-post header p {
@@ -257,19 +249,19 @@
   }
   
   .blog-post-nav ul {
-    margin: var(--spacing-0);
+    margin: var(--size__spacing-0);
   }
   
   .gatsby-highlight {
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--size__spacing-8);
   }
   
   /* Media queries */
   
   @media (max-width: 42rem) {
     blockquote {
-      padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
-      margin-left: var(--spacing-0);
+      padding: var(--size__spacing-0) var(--size__spacing-0) var(--size__spacing-0) var(--size__spacing-4);
+      margin-left: var(--size__spacing-0);
     }
     ul,
     ol {

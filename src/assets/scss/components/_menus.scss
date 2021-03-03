@@ -1,0 +1,25 @@
+.main-navigation {
+    background-color: $color__primary;
+    position: sticky;
+
+    ul {
+        max-width: $site__width_2x-large;
+        margin: 0;
+        padding: 0 $size__spacing-3;   
+        
+        @include no-bullets;
+        @include flex;
+
+        li {
+            margin: 0 $size__spacing-2;
+        }
+
+        a {
+            color: $color__white;
+            padding: $size__spacing-4 $size__spacing-2;
+            display: inline-flex;
+            align-self: center;
+            line-height: 1;
+        }
+    }
+}

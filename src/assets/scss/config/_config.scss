@@ -6,32 +6,32 @@
 @import "columns";
 
 :root {
-    --maxWidth-none: "none";
-    --maxWidth-xs: 20rem;
-    --maxWidth-sm: 24rem;
-    --maxWidth-md: 28rem;
-    --maxWidth-lg: 32rem;
-    --maxWidth-xl: 36rem;
-    --maxWidth-2xl: 42rem;
-    --maxWidth-3xl: 48rem;
-    --maxWidth-4xl: 56rem;
-    --maxWidth-full: "100%";
-    --maxWidth-wrapper: var(--maxWidth-2xl);
-    --spacing-px: "1px";
-    --spacing-0: 0;
-    --spacing-1: 0.25rem;
-    --spacing-2: 0.5rem;
-    --spacing-3: 0.75rem;
-    --spacing-4: 1rem;
-    --spacing-5: 1.25rem;
-    --spacing-6: 1.5rem;
-    --spacing-8: 2rem;
-    --spacing-10: 2.5rem;
-    --spacing-12: 3rem;
-    --spacing-16: 4rem;
-    --spacing-20: 5rem;
-    --spacing-24: 6rem;
-    --spacing-32: 8rem;
+    --width__max-none: "none";
+    --width__max-xs: 20rem;
+    --width__max-sm: 24rem;
+    --width__max-md: 28rem;
+    --width__max-lg: 32rem;
+    --width__max-xl: 36rem;
+    --width__max-2xl: 42rem;
+    --width__max-3xl: 48rem;
+    --width__max-4xl: 56rem;
+    --width__max-full: "100%";
+    --width__max-wrapper: var(--width__max-2xl);
+    --size__spacing-px: "1px";
+    --size__spacing-0: 0;
+    --size__spacing-1: 0.25rem;
+    --size__spacing-2: 0.5rem;
+    --size__spacing-3: 0.75rem;
+    --size__spacing-4: 1rem;
+    --size__spacing-5: 1.25rem;
+    --size__spacing-6: 1.5rem;
+    --size__spacing-8: 2rem;
+    --size__spacing-10: 2.5rem;
+    --size__spacing-12: 3rem;
+    --size__spacing-16: 4rem;
+    --size__spacing-20: 5rem;
+    --size__spacing-24: 6rem;
+    --size__spacing-32: 8rem;
     // --font__sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
     //   "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     //   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -59,10 +59,10 @@
     --size__font-5: 2.074rem;
     --size__font-6: 2.488rem;
     --size__font-7: 2.986rem;
-    --color__primary: #005b99;
-    --color__text: #2e353f;
+    --color__primary: #0b4f6c;
+    --color__text: #212121;
     --color__text-light: #4f5969;
-    --color__heading: #1a202c;
+    --color__heading: var(--color__primary);
     --color__heading-black: black;
     --color__accent: #d1dce5;
 }
@@ -86,9 +86,9 @@
  $black:    $color__black;
  
  $color__palette: (
-     primary: $color__black,
-     secondary: #c70016,
-     accent: #ebdc57,
+     primary: #0b4f6c,
+     secondary: #05222e,
+     accent: #9E9E9E,
      dark-gray: $color__black-80,
      gray: $color__black-60,
      light-gray: $color__black-20,
@@ -181,6 +181,38 @@ $font__sizes: (
 
 $font__size-entry-header: map-get( $font__sizes, entry-header );
 
+$spacing: (
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    8: 2rem,
+    10: 2.5rem,
+    12: 3rem,
+    16: 4rem,
+    20: 5rem,
+    24: 6rem,
+    32: 8rem,
+);
+
+$size__spacing-0: map-get( $spacing, 0 );
+$size__spacing-1: map-get( $spacing, 1 );
+$size__spacing-2: map-get( $spacing, 2 );
+$size__spacing-3: map-get( $spacing, 3 );
+$size__spacing-4: map-get( $spacing, 4 );
+$size__spacing-5: map-get( $spacing, 5 );
+$size__spacing-6: map-get( $spacing, 6 );
+$size__spacing-8: map-get( $spacing, 8 );
+$size__spacing-10: map-get( $spacing, 10 );
+$size__spacing-12: map-get( $spacing, 12 );
+$size__spacing-16: map-get( $spacing, 16 );
+$size__spacing-20: map-get( $spacing, 20 );
+$size__spacing-24: map-get( $spacing, 24 );
+$size__spacing-32: map-get( $spacing, 32 );
+
 /**
  * Structure
  */
@@ -192,9 +224,10 @@ $widths: (
     medium: 28rem,
     large: 32rem,
     x-large: 36rem,
-    2x-large: 42rem,
+    2x-large: 75rem,
     3x-large: 48rem,
     4x-large: 48rem,
+    full: 100%,
 );
 
 $breakpoints: (
@@ -214,6 +247,10 @@ $site__width_tablet: map-get( $widths, tablet );
 $site__width_medium: map-get( $widths, medium );
 $site__width_large: map-get( $widths, large );
 $site__width_x-large: map-get( $widths, x-large );
+$site__width_2x-large: map-get( $widths, 2x-large );
+$site__width_3x-large: map-get( $widths, 3x-large );
+$site__width_4x-large: map-get( $widths, 4x-large );
+$site__width_full: map-get( $widths, full );
 
 $size__site-main: 100%;
 $size__site-sidebar: 25%;
@@ -225,7 +262,7 @@ $content-max-width-post: 748px;
 $content-max-width: 1130px;
 $alignwide-width: 1130px;
 
-$site__max-width: 1920px;
+$site__max-width: $site__width_full;
 
 $padding-site: 95px;
 $padding-site-mobile: 25px;
