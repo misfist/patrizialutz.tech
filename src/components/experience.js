@@ -58,13 +58,6 @@ const Experience = () => {
           {posts.map( post => {
 
             let clients = post.acf.clients
-            // let start = post.acf.startDate ? new date( post.acf.startDate ) : ''
-
-            // const clientBlock = () => {
-            //   if( clients && clients.length ) {
-            //     <div>We have clients</div>
-            //   }
-            // }
 
             return (
               <article
@@ -93,7 +86,7 @@ const Experience = () => {
 
                 <div className="entry-content">
                   <h5 className="job-title">{post.title}</h5>
-                  <div className="job-description">{parse(post.content)}</div>
+                  <div className="job-description" dangerouslySetInnerHTML={{ __html: post.content }} />
 
                   {clients && (
                     <div className="clients-list">

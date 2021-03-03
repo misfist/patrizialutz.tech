@@ -78,7 +78,7 @@ const Projects = () => {
                   />
                   <div className="overlay">
                     <h3 className="entry-title"><a href={post.acf.url} title={parse(post.title)} rel="noreferrer" target="_blank">{parse(post.title)}<span className="fas fa-external-link-alt"></span></a></h3>
-                    <div className="entry-content">{ parse(post.content) }</div>
+                    <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.content }} />
                   </div>
                 </div>
               </article>

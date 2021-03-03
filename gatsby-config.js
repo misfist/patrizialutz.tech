@@ -5,14 +5,16 @@
  * https://www.gatsbyjs.com/docs/gatsby-config/
  *
  */
+
 require("dotenv").config({
   path: `.env`,
 })
 
-// require .env.development or .env.production
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`, // or '.env'
+});
+
+const config = require('gatsby-plugin-config');
 
 module.exports = {
   siteMetadata: {
@@ -38,7 +40,8 @@ module.exports = {
        */
       resolve: `gatsby-source-wordpress`,
       options: {
-        // the only required plugin option for WordPress is the GraphQL url.
+        baseUrl: process.env.WP_BASE_URL,
+        protocol: `https`,
         url:
           process.env.WPGRAPHQL_URL ||
           `https://editor.patrizialutz.tech/graphql`,
@@ -46,8 +49,8 @@ module.exports = {
           requestConcurrency: 6, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
         },
+        useACF: true,
         verbose: true,
-        verboseOutput: true,
         debug: {
           preview: true,
           graphql: {
@@ -68,7 +71,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
-        path: `${__dirname}/content/assets`,
+        path: `${__dirname}/src/assets`,
       },
     },
 
@@ -91,18 +94,41 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#0b4f6c`,
         display: `browser`,
-        icon: `content/assets/sneaky-cat.png`,
+        icon: `src/assets/img/sneaky-cat.png`,
       },
     },
 
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
 
+    {
+      // See https://www.gatsbyjs.com/plugins/gatsby-plugin-recaptcha/
+      resolve: `gatsby-plugin-recaptcha`,
+      options: {
+         async: true,
+         defer: true,
+         args: `?onload=onloadCallback&render=explicit`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          includePaths: ["src/scss"],
+        },
+        cssLoaderOptions: {
+          camelCase: false,
+        },
+        useResolveUrlLoader: true,
+      },
+    },
+
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality
      * To learn more, visit: https://gatsby.dev/offline
      */
     // `gatsby-plugin-offline`,
+    
   ],
 }
 

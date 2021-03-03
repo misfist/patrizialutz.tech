@@ -1,0 +1,22 @@
+
+$font__main: 'Roboto', sans-serif;
+$font__headings: 'Roboto Condensed', sans-serif;
+$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", Courier, monospace;
+// $font__line-height-body: 1.75;
+$font__size-body: 1.6rem;
+$font__line-height-body: 150%;
+$font__line-height-pre: 1.6;
+
+$font__sizes: (
+    small: 1.4,
+    normal: 1.6, // base
+    intro: 1.8, // slightly bigger
+    medium: 2.1,
+    entry-header: 2.4,
+    large: 2.7, // h3
+    larger: 3.2, // h2
+    largest: 4.6, // h1
+);
+
+$font__size-entry-header: map-get( $font__sizes, entry-header );

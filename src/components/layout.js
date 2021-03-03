@@ -3,6 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 import Bio from "./bio"
 import Menu from "./menu"
+import "../assets/scss/styles.scss"
 
 const Layout = ({ isHomePage, children }) => {
   const {

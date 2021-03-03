@@ -8,8 +8,9 @@ import SEO from "../components/seo"
 import Profile from "../components/profile"
 import Experience from "../components/experience"
 import Expertise from "../components/expertise"
+import ContactForm from "../components/contactForm"
 import Projects from "../components/projects"
-import Contact from "../components/contact"
+// import Contact from "../components/contact"
 
 const BlogIndex = ({
   data,
@@ -42,7 +43,7 @@ const BlogIndex = ({
 
       <Projects />
 
-      <Contact />
+      <ContactForm />
 
       <div>
         {posts.map(post => {

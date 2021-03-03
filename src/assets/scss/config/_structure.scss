@@ -1,0 +1,44 @@
+$widths: (
+    small: 440px,
+    mobile: 620px,
+    tablet: 790px,
+    medium: 1000px,
+    large: 1180px,
+    x-large: 1320px,
+);
+
+$breakpoints: (
+    small: 540px,
+    wp-mobile: 600px,
+    mobile: 680px,
+    wp-tablet: 782px,
+    tablet: 830px,
+    medium: 1040px,
+    large: 1220px,
+    x-large: 1360px,
+);
+
+$site__width_small: map-get( $widths, small );
+$site__width_mobile: map-get( $widths, mobile );
+$site__width_tablet: map-get( $widths, tablet );
+$site__width_medium: map-get( $widths, medium );
+$site__width_large: map-get( $widths, large );
+$site__width_x-large: map-get( $widths, x-large );
+
+$size__site-main: 100%;
+$size__site-sidebar: 25%;
+
+
+$content-max-width-page: 938px;
+$content-max-width-post: 748px;
+
+$content-max-width: 1130px;
+$alignwide-width: 1130px;
+
+$site__max-width: 1920px;
+
+$padding-site: 95px;
+$padding-site-mobile: 25px;
+
+$site__margins-min: 4.4rem;
+$site__margins-max: 6rem;
