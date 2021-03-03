@@ -11,12 +11,6 @@ import Recaptcha from "react-recaptcha"
 import * as Yup from 'yup';
 
 const ContactForm = () => {
-    // const WEBSITE_URL = "https://editor.patrizialutz.tech"
-    // const API_USER = `api_user`
-    // const API_KEY = `t1NW 50nr RwVB xhoz ttn0 RkcS`
-    // const USER_PASS = `rA7&np9z*mMGklAtLg*X8nPI`
-    // const FORM_ID = "983"
-    // const RECAPTCHA_KEY = `6LfYOk0aAAAAAC5Vl8_aaM6J2nhBfOsKmCkK7kH-`
 
     const FORM_ID = "983"
     const WEBSITE_URL = process.env.WEBSITE_URL

@@ -33,7 +33,8 @@ const BlogIndex = ({
 
   return (
     <Layout isHomePage>
-      <SEO title="All projects" />
+
+      <SEO title="Home" />
 
       <Profile />
 
@@ -44,39 +45,7 @@ const BlogIndex = ({
       <Projects />
 
       <ContactForm />
-
-      <div>
-        {posts.map(post => {
-          const title = post.title
-
-          return (
-              <article
-                key={post.uri}
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.uri} itemProp="url">
-                      <span itemProp="headline">{parse(title)}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.date}</small>
-                </header>
-                <section itemProp="description">{parse(post.excerpt)}</section>
-              </article>
-          )
-        })}
-      </div>
-
-      {previousPagePath && (
-        <>
-          <Link to={previousPagePath}>Previous page</Link>
-          <br />
-        </>
-      )}
-      {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+      
     </Layout>
   )
 }

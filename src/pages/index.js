@@ -7,12 +7,12 @@ import Experience from "../components/experience"
 import Expertise from "../components/expertise"
 import ContactForm from "../components/contactForm"
 import Projects from "../components/projects"
-// import Contact from "../components/contact"
 
 const Home = ({ data }) => {
 
   return (
     <Layout isHomePage>
+      
       <SEO title="Home" />
 
       <Profile />

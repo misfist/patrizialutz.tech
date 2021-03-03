@@ -86,7 +86,6 @@ const Projects = () => {
           })}
         </div>
       </div>
-      <pre>{JSON.stringify(posts, null, 4)}</pre>
     </section>
   )
 }
