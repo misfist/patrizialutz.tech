@@ -1,4 +1,8 @@
-.wordpress-cache
+# Ignore it all
+*
+
+# Except
+!public
 
 # Logs
 logs
@@ -58,7 +62,7 @@ typings/
 
 # gatsby files
 .cache/
-!public
+
 
 # Mac files
 .DS_Store
