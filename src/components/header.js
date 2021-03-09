@@ -1,9 +1,28 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import React, { useEffect, useRef, useState } from 'react';
+import { useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
-import Menu from "./menu"
+import MainMenu from "./menu"
+import SocialMenu from './menu-social'
 
 const Header = ( { data } ) => {
+  const [isSticky, setSticky] = useState( false );
+  const ref = useRef( null );
+
+  const handleScroll = () => {
+    const offset = document.querySelector( '.main-heading' ).offsetHeight;
+    if ( ref.current ) {
+      setSticky( ref.current.getBoundingClientRect().top <= -offset );
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener( 'scroll', handleScroll );
+
+    return () => {
+      window.removeEventListener( 'scroll', handleScroll );
+    };
+  }, []);
+
   const {
     wp: {
       generalSettings: { 
@@ -29,24 +48,25 @@ const Header = ( { data } ) => {
   let backgroundImage = customHeaders.length ? customHeaders[Math.floor(Math.random() * customHeaders.length)] : '';
 
   const style = {
-    backgroundImage:  'url(' + backgroundImage + ')',
+    backgroundImage:  'linear-gradient(rgba(11, 79, 108, 0.45), rgba(11, 79, 108, 0.45)), url(' + backgroundImage + ')',
     WebkitTransition: 'all', // note the capital 'W' here
     msTransition: 'all' // 'ms' is the only lowercase vendor prefix
   };
 
   return (
-    <header className="global-header lazy" style={style} loading="lazy">
+    <header className={`global-header lazy sticky-wrapper${isSticky ? ' sticky' : ''}`} style={style} loading="lazy" ref={ref}>
       <div className="main-heading">
         <h1 className="site-title">
-          <Link to={url}>{parse(title)}</Link>
+          <a href={process.env.WEBSITE_URL}>{parse(title)}</a>
         </h1>
         <div
           className="site-description"
           dangerouslySetInnerHTML={{ __html: description }}
         ></div>
+        <SocialMenu />
       </div>
 
-      <Menu />
+      <MainMenu />
     </header>
   )
 }

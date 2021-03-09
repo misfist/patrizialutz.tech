@@ -105,6 +105,7 @@ const ContactForm = () => {
     return (
         <section id="contact" className="section section__contact">
             <h2 className="section-title">Contact</h2>
+            <div className="section-content">
             {
                 ( formik.status && formik.status.sent ) ? (
                     formik.status.message
@@ -189,6 +190,7 @@ const ContactForm = () => {
                     </form> 
                 )
             }
+            </div>
             
         </section>
     )

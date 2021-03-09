@@ -1,5 +1,4 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
 import "../assets/scss/styles.scss"
 import Header from './header';
 import Footer from './footer';

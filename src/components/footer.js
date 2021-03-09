@@ -1,16 +1,19 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { SVGSource } from '../utils/sprites'
 
 const Footer = () => {
 
   return (
     <footer className="global-footer">
-      © {new Date().getFullYear()}, Built with
-      {` `}
-      <a href="https://www.gatsbyjs.com">Gatsby</a>
-      {` `}
-      And <a href="https://wordpress.org/">WordPress</a>
-    </footer>
+      <SVGSource />
+      <div className="footer-wrapper">
+        © {new Date().getFullYear()}, Proudly Built with
+        {` `}
+        <a href="https://www.gatsbyjs.com" target="_blank" rel="noreferrer">Gatsby</a>
+        {` `}
+        And <a href="https://wordpress.org/" target="_blank" rel="noreferrer">WordPress</a>  
+      </div>
+   </footer>
   )
 }
 
