@@ -1,0 +1,21 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: $font__line-height-normal;
+  font-size: $font__size-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font__main;
+  font-size: $font__size-base;
+  color: $color__text-main;
+  min-height: 100vh;
+  // position: relative;
+}

@@ -1,85 +1,87 @@
-$color__white: #fff;
-$color__black: #000;
+/**
+ * Colors
+ */
+ $color__white: #fff;
+ $color__black: #000;
+ 
+ $white:    $color__white;
+ $color__black-10: #e5e5e5;
+ $color__black-20: #cccccc;
+ $color__black-30: #b2b2b2;
+ $color__black-40: #999;
+ $color__black-50: #7f7f7f;
+ $color__black-60: #666;
+ $color__black-70: #4c4c4c;
+ $color__black-80: #333;
+ $color__black-90: #191919;
+ $black:    $color__black;
+ 
+ $color__palette: (
+     primary: #0b4f6c,
+     secondary: #05222e,
+     accent: #ecf8f8,
+     dark-gray: $color__black-80,
+     gray: $color__black-60,
+     light-gray: $color__black-20,
+ );
+ 
+ $color__primary: map-get( $color__palette, primary );
+ $color__secondary: map-get( $color__palette, secondary );
+ $color__accent: map-get( $color__palette, accent );
+ $color__dark-gray: map-get( $color__palette, dark-gray );
+ $color__gray: map-get( $color__palette, gray );
+ $color__light-gray: map-get( $color__palette, light-gray );
+ 
+ $color__background-body: $color__white;
+ $color__background-header: $color__black;
+ $color__background-screen: $color__accent;
+ $color__background-hr: $color__black-20;
+ $color__background-button: $color__secondary;
+ $color__background-button-hover: $color__black;
+ $color__background-pre: #eee;
+ $color__background-ins: $color__white;
+ $color__background-input: $color__white;
+ 
+ $color__text-screen: $color__dark-gray;
+ $color__text-input: $color__dark-gray;
+ $color__text-input-focus: $color__black;
+ $color__text-main: $color__dark-gray;
+ $color__link: $color__text-main;
+ $color__text-muted: $color__gray;
+ $color__headings: $color__primary;
+ 
+ $color__border-button: transparent;
+ $color__border-button-hover: transparent;
+ $color__border-button-focus: transparent;
+ $color__border-input: $color__light-gray;
+ $color__border-abbr: $color__gray;
+ $color__border-table: $color__light-gray;
+ 
+ 
+ $background__sticky-post-pin: $color__secondary;
+ 
+ $background__tags: $color__light-gray;
+ $background__post-navigation: #f3f8fb;
+ 
+ $color__text-secondary: $color__gray;
+ 
+ $color__lines: #f3f9fd;
+ 
+ $background__dropdown-menu: #f2f9fd;
+ 
+ // $header__gradient: linear-gradient(to bottom, rgb(247, 251, 254) 0%, rgba(255, 255, 255, 0) 304px);
+ $background__dotted-border: #f1f4f7;
+ 
+ $color__border-comments: #ebeef1;
+ 
+ $color__reply-link: #64c0f4;
+ 
+ 
+ $background__search-modal: rgba(242, 249, 253, .98);
+ $background__mobile-menu: rgba(242, 249, 253, .98);
+ 
+ $color__borders-pullquote: #dbdee1;
+ $color__background-pullquote: #f2f9fd;
+ 
 
-$white:    $color__white;
-$color__black-10: #e5e5e5;
-$color__black-20: #cccccc;
-$color__black-30: #b2b2b2;
-$color__black-40: #999;
-$color__black-50: #7f7f7f;
-$color__black-60: #666;
-$color__black-70: #4c4c4c;
-$color__black-80: #333;
-$color__black-90: #191919;
-$black:    $color__black;
-
-$color__palette: (
-    primary: $color__black,
-    secondary: #c70016,
-    accent: #ebdc57,
-    dark-gray: $color__black-80,
-    gray: $color__black-60,
-    light-gray: $color__black-20,
-);
-
-$color__primary: map-get( $color__palette, primary );
-$color__secondary: map-get( $color__palette, secondary );
-$color__accent: map-get( $color__palette, accent );
-$color__dark-gray: map-get( $color__palette, dark-gray );
-$color__gray: map-get( $color__palette, gray );
-$color__light-gray: map-get( $color__palette, light-gray );
-
-$color__background-body: $color__white;
-$color__background-header: $color__black;
-$color__background-screen:$color__white;
-$color__background-hr: $color__black-20;
-$color__background-button: $color__secondary;
-$color__background-button-hover: $color__black;
-$color__background-pre: #eee;
-$color__background-ins: $color__white;
-
-$color__text-screen: $color__dark-gray;
-$color__text-input: $color__dark-gray;
-$color__text-input-focus: $color__black;
-$color__text-main: $color__dark-gray;
-$color__link: $color__text-main;
-$color__text-muted: $color__gray;
-$color__headings: $color__black;
-
-$color__border-button: transparent;
-$color__border-button-hover: transparent;
-$color__border-button-focus: transparent;
-$color__border-input: $color__light-gray;
-$color__border-abbr: $color__gray;
-$color__border-table: $color__light-gray;
-
-
-$background__sticky-post-pin: $color__secondary;
-
-$background__tags: $color__light-gray;
-$background__post-navigation: #f3f8fb;
-
-$color__text-secondary: $color__gray;
-
-$color__lines: #f3f9fd;
-
-
-$background__dropdown-menu: #f2f9fd;
-
-// $header__gradient: linear-gradient(to bottom, rgb(247, 251, 254) 0%, rgba(255, 255, 255, 0) 304px);
-$background__dotted-border: #f1f4f7;
-
-$color__border-comments: #ebeef1;
-
-$color__reply-link: #64c0f4;
-
-
-$background__search-modal: rgba(242, 249, 253, .98);
-$background__mobile-menu: rgba(242, 249, 253, .98);
-
-$color__borders-pullquote: #dbdee1;
-$color__background-pullquote: #f2f9fd;
-
-
-$color__border-recent-posts: #eaedef;
-
+ $color__border-recent-posts: #eaedef;

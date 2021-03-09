@@ -1,0 +1,80 @@
+.section {
+    &__experience {
+
+        background-color: $color__background-screen;
+
+        article {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h4 {
+            line-height: $font__line-height-tight;
+            font-size: $font__size-normal;
+
+            svg {
+                height: 27px;
+                width: 27px;
+                margin-right: .25rem;
+            }
+        }
+
+        .clients-list,
+        .job-description {
+            ul {
+                @include no-bullets;
+                margin-top: 0;
+            }
+
+            li {
+                margin-bottom: 0;
+
+                &:after {
+                    content: ',';
+                    margin-right: .25rem;
+                }
+
+                &:last-of-type {
+                    &:after {
+                        content: none;
+                    }
+                }
+            }
+        }
+
+        .job-description {
+            ul {
+                @include no-bullets;
+            }
+
+            li {
+                display: inline-block;
+                &:after {
+                    content: ',';
+                    margin-right: .25rem;
+                }
+            }
+
+        }
+
+    }
+
+    @include breakpoint( medium ) {
+
+        &__experience {
+            article {
+                flex-direction: row;
+            }
+
+            .entry-header {
+                width: calc( 100% / 4  );
+                padding-right: 1rem;
+            }
+
+            .entry-content {
+                width: calc( ( 100% / 4 ) * 3 );
+                padding-left: 1rem;
+            }
+        }
+    }
+}

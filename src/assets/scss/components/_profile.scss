@@ -1,0 +1,25 @@
+.bio {
+    display: flex;
+    margin-bottom: $size__spacing-16;
+  }
+  
+  .bio p {
+    margin-bottom: 0;
+  }
+  
+  .bio-avatar {
+    margin-right: $size__spacing-4;
+    margin-bottom: 0;
+    max-width: 80px;
+    height: auto;
+    border-radius: 100%;
+  }
+
+.section {
+  &__profile {
+    .wp-block-separator {
+      margin-bottom: 2rem;
+    }
+  }
+}
+  

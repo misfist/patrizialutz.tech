@@ -1,21 +1,31 @@
-$widths: (
-    small: 440px,
+/**
+ * Structure
+ */
+ $widths: (
+    x-small: 20rem,
+    small: 24rem,
     mobile: 620px,
     tablet: 790px,
-    medium: 1000px,
-    large: 1180px,
-    x-large: 1320px,
+    medium: 54rem,
+    large: 57rem, // 912
+    x-large: 66rem, //1056
+    2x-large: 75rem, //1200
+    3x-large: 82rem, //1312
+    4x-large: 88rem,
+    full: 100%,
 );
 
 $breakpoints: (
-    small: 540px,
-    wp-mobile: 600px,
-    mobile: 680px,
-    wp-tablet: 782px,
-    tablet: 830px,
-    medium: 1040px,
-    large: 1220px,
-    x-large: 1360px,
+    x-small: 0,
+    small: 58px,
+    mobile: 580px,
+    tablet: 750px,
+    medium: 52rem,
+    large: 55rem,
+    x-large: 64rem, //1056
+    2x-large: 73rem, //1200
+    3x-large: 80rem, //1312
+    4x-large: 86rem,
 );
 
 $site__width_small: map-get( $widths, small );
@@ -24,18 +34,15 @@ $site__width_tablet: map-get( $widths, tablet );
 $site__width_medium: map-get( $widths, medium );
 $site__width_large: map-get( $widths, large );
 $site__width_x-large: map-get( $widths, x-large );
+$site__width_2x-large: map-get( $widths, 2x-large );
+$site__width_3x-large: map-get( $widths, 3x-large );
+$site__width_4x-large: map-get( $widths, 4x-large );
+$site__width_full: map-get( $widths, full );
 
 $size__site-main: 100%;
 $size__site-sidebar: 25%;
-
-
-$content-max-width-page: 938px;
-$content-max-width-post: 748px;
-
-$content-max-width: 1130px;
-$alignwide-width: 1130px;
-
-$site__max-width: 1920px;
+$size__width-content: $site__width_x-large;
+$site__max-width: $site__width_full;
 
 $padding-site: 95px;
 $padding-site-mobile: 25px;

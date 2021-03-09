@@ -1,0 +1,78 @@
+  /* Heading */
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $font__headings;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: $font__line-height-normal;
+  }
+  
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: $font__weight-normal;
+    color: $color__headings;
+  }
+  
+  h1 {
+    font-weight: $font__line-height-normal;
+    font-size: $font__size-2xl;
+    color: $font__headings;
+  }
+  
+  h2 {
+    font-size: $font__size-xl;
+  }
+  
+  h3 {
+    font-size: $font__size-medium;
+  }
+  
+  h4 {
+    font-size: $font__size-normal;
+  }
+  
+  h5 {
+    font-size: var(--size__font-2);
+  }
+  
+  h6 {
+    font-size: var(--size__font-1);
+  }
+  
+  h1 > a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  h2 > a,
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Prose */
+  
+  p {
+    line-height: $font__line-height-relaxed;
+    --baseline-multiplier: 0.179;
+    --x-height-multiplier: 0.35;
+    margin: 0 0 $size__spacing-8 0;
+    padding: 0;
+  }
+
+  .lead {
+    text-align: center;
+    font-size: $font__size-intro;
+    line-height: $font__line-height-tight;
+  }

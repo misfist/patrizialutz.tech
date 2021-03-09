@@ -1,15 +1,27 @@
+.menu {
+    @include no-bullets;
+    @include flex;
+}
+
+.js-sticky-nav {
+    position: sticky;
+    top: 0;
+}
+
 .main-navigation {
     background-color: $color__primary;
-    position: sticky;
+
+    &.sticky {
+        box-shadow: 2px 2px 5px 0 rgba($color__black,.75);
+    }
 
     ul {
         max-width: $site__width_2x-large;
-        margin: 0;
-        padding: 0 $size__spacing-3;   
+        margin: 0 auto;
+        padding: 0 $size__spacing-3;
+        text-transform: uppercase;
+        justify-content: space-between;
         
-        @include no-bullets;
-        @include flex;
-
         li {
             margin: 0 $size__spacing-2;
         }
@@ -20,6 +32,45 @@
             display: inline-flex;
             align-self: center;
             line-height: 1;
+            text-decoration: none;
+
+            span {
+                border-bottom: 1px solid transparent;
+                &:hover {
+                    border-bottom: 1px solid rgba( $color__white, 0.5 );
+                }
+            }
         }
     }
 }
+
+.social-menu {
+    ul {
+        justify-content: center;
+        align-items: center;
+    }
+    a {
+        display: block;
+        padding: 0 .75rem;
+        color: $color__primary;
+        svg {
+            height: 32px;
+            width: 32px;
+        }
+        span {
+            @include visually-hidden;
+        }
+    }
+}
+
+.global-header {
+    .social-menu {
+        a {
+            color: $color__white;
+            svg {
+                fill: $color__white;
+            }
+        }
+    }
+}
+

@@ -1,22 +1,79 @@
-
-$font__main: 'Roboto', sans-serif;
-$font__headings: 'Roboto Condensed', sans-serif;
+/**
+ * Fonts
+ */
+$font__main: 'Work Sans', sans-serif;
+$font__headings: 'Montserrat', sans-serif;
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 // $font__line-height-body: 1.75;
 $font__size-body: 1.6rem;
 $font__line-height-body: 150%;
 $font__line-height-pre: 1.6;
+$font__size-base: 16px;
 
-$font__sizes: (
-    small: 1.4,
-    normal: 1.6, // base
-    intro: 1.8, // slightly bigger
-    medium: 2.1,
-    entry-header: 2.4,
-    large: 2.7, // h3
-    larger: 3.2, // h2
-    largest: 4.6, // h1
-);
+ $font__sizes: (
+     small: 1.4rem,
+     normal: 1.5rem,
+     intro: 1.8rem, // slightly bigger
+     medium: 2.1rem,
+     entry-header: 2.4rem,
+     large: 2.7rem, // h3
+     xl: 3.2rem, // h2
+     2xl: 4rem, // h1 64px
+ );
 
-$font__size-entry-header: map-get( $font__sizes, entry-header );
+ $font__size-entry-header: map-get( $font__sizes, entry-header );
+ $font__size-small: map-get( $font__sizes, small );
+ $font__size-normal: map-get( $font__sizes, normal );
+ $font__size-medium: map-get( $font__sizes, medium );
+ $font__size-large: map-get( $font__sizes, large );
+ $font__size-xl: map-get( $font__sizes, xl );
+ $font__size-2xl: map-get( $font__sizes, 2xl );
+ $font__size-intro: map-get( $font__sizes, intro );
+
+ $font__weights: (
+     normal: 400,
+     bold: 700,
+     black: 900
+ );
+
+ $font__weight-normal: map-get( $font__weights, normal );
+ $font__weight-bold: map-get( $font__weights, bold );
+ $font__weight-black: map-get( $font__weights, black );
+ 
+ $spacing: (
+     0: 0,
+     1: 0.25rem,
+     2: 0.5rem,
+     3: 0.75rem,
+     4: 1rem,
+     5: 1.25rem,
+     6: 1.5rem,
+     8: 2rem,
+     10: 2.5rem,
+     12: 3rem,
+     16: 4rem,
+     20: 5rem,
+     24: 6rem,
+     32: 8rem,
+ );
+
+ $font__line-height-none: 1;
+ $font__line-height-tight: 1.1;
+ $font__line-height-normal: 1.5;
+ $font__line-height-relaxed: 1.625;
+ 
+ $size__spacing-0: map-get( $spacing, 0 );
+ $size__spacing-1: map-get( $spacing, 1 );
+ $size__spacing-2: map-get( $spacing, 2 );
+ $size__spacing-3: map-get( $spacing, 3 );
+ $size__spacing-4: map-get( $spacing, 4 );
+ $size__spacing-5: map-get( $spacing, 5 );
+ $size__spacing-6: map-get( $spacing, 6 );
+ $size__spacing-8: map-get( $spacing, 8 );
+ $size__spacing-10: map-get( $spacing, 10 );
+ $size__spacing-12: map-get( $spacing, 12 );
+ $size__spacing-16: map-get( $spacing, 16 );
+ $size__spacing-20: map-get( $spacing, 20 );
+ $size__spacing-24: map-get( $spacing, 24 );
+ $size__spacing-32: map-get( $spacing, 32 );

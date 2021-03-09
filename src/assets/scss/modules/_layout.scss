@@ -1,0 +1,32 @@
+.main-heading,
+.main-content .section .section-title,
+.main-content .section .section-content,
+.footer-wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding: $size__spacing-4;
+}
+
+.main-heading,
+.footer-wrapper {
+    max-width: $site__width_x-large;
+}
+
+.main-content .section .section-title,
+.main-content .section .section-content {
+    max-width: $size__width-content;
+}
+
+.global-wrapper {
+  margin: 0;
+  max-width: $site__max-width;
+  // padding: var(--size__spacing-10) var(--size__spacing-5);
+}
+
+.global-wrapper[data-is-root-path="true"] .bio {
+  margin-bottom: $size__spacing-20;
+}
+
+footer {
+    padding: $size__spacing-6 0;
+}

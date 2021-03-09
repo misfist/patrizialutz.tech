@@ -4,24 +4,57 @@
     max-width: $site__max-width;
 
     /* Background Image */
-
     background-color: $color__primary;
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-image: linear-gradient(
+        rgba($color__primary, 0.45), 
+        rgba($color__primary, 0.45)
+      ),
 }
+
+.sticky-wrapper {
+    position: relative;
+    // height: 3rem; /* We need to change this value */
+  }
+  
+  .sticky {
+    .sticky-inner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
+  }
   
 .main-heading {
-    font-size: var(--size__font-7);
-    margin: 0 auto;
-    max-width: $site__width_2x-large;
-    padding: 0 $size__spacing-3;
-}
-
-.site-title {
     margin-top: 0;
-    padding-top: $size__spacing-6;
+    padding: $size__spacing-24;
+    color: $color__white;
+    text-align: center;
 
-    font-size: map-get( $font__sizes, largest );
+    .site-title {
+        margin-top: 0;
+        padding-top: $size__spacing-6;
+        font-size: $font__size-2xl;
+        font-weight: $font__weight-bold;
+
+        a {
+            color: $color__white;
+        }
+    }
+
+    .site-description {
+        font-size: $font__size-medium;
+        font-family: $font__main;
+        font-weight: $font__weight-normal;
+        line-height: $font__line-height-tight;
+    }
+
+    @include breakpoint( 2x-large ) {
+        padding: $size__spacing-24 $size__spacing-0;
+    }
 }

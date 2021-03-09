@@ -1,0 +1,28 @@
+.section {
+    &__projects {
+        .post-list {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            row-gap: $size__spacing-4;
+            column-gap: $size__spacing-4;
+        }
+    }
+
+    @include breakpoint( tablet ) {
+        &__projects {
+            .post-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    @include breakpoint( large ) {
+        &__projects {
+            .post-list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+}

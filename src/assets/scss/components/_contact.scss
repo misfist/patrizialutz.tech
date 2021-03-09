@@ -1,0 +1,17 @@
+.section {
+    &__contact {
+        background-color: $color__primary;
+
+        .section-title {
+            color: $color__white;
+
+            &:after {
+                border-bottom-color: $color__white;
+            }
+        }
+
+        label {
+            color: $color__white;
+        }
+    }
+}
