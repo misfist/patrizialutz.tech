@@ -7,11 +7,12 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
+import { SVG } from '../utils/sprites'
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
   {
-    allWpPortfolio(filter: {portfolioTypes: {nodes: {elemMatch: {slug: {eq: "project"}}}}}, limit: 8, sort: {fields: menuOrder, order: ASC}) {
+    allWpPortfolio(filter: {portfolioTypes: {nodes: {elemMatch: {slug: {eq: "project"}}}}}, limit: 6, sort: {fields: menuOrder, order: ASC}) {
       nodes {
         title
         content
@@ -58,6 +59,8 @@ const Projects = () => {
           {posts.map(post => {
             const featuredImage = post.featuredImage.node
 
+            const props = {}
+
             return (
               <article
                 key={post.slug}
@@ -77,7 +80,16 @@ const Projects = () => {
                     title={post.title}
                   />
                   <div className="overlay">
-                    <h3 className="entry-title"><a href={post.acf.url} title={parse(post.title)} rel="noreferrer" target="_blank">{parse(post.title)}<span className="fas fa-external-link-alt"></span></a></h3>
+                    <h3 className="entry-title">
+                        <a href={post.acf.url} title={parse(post.title)} rel="noreferrer" target="_blank">
+                          {parse(post.title)}
+                          <SVG 
+                            id='external'
+                            width='32'
+                            height='32'
+                          />
+                        </a>
+                      </h3>
                     <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.content }} />
                   </div>
                 </div>

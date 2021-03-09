@@ -7,6 +7,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import parse from "html-react-parser"
+import { SVG } from '../utils/sprites'
 
 const Experience = () => {
   const data = useStaticQuery(
@@ -59,6 +60,15 @@ const Experience = () => {
 
             let clients = post.acf.clients
 
+            const condition = post.acf.url && post.acf.url.length !== 0;
+
+            const props = {
+              ...( condition && { href: post.acf.url } ),
+              ...( condition ? { title: 'Opens in new tab' } : {} ),
+              ...( condition && { rel: 'noopener' } ),
+              ...( condition && { target: '_blank' } ),
+            };
+          
             return (
               <article
                 key={post.slug}
@@ -67,14 +77,13 @@ const Experience = () => {
               >
                 <header className="entry-header">
                   <h4 className="job-company">
-                    <i className="fas fa-external-link-alt"></i>
-                    <a
-                      href={post.url}
-                      target="_blank"
-                      title={post.title}
-                      rel="noreferrer"
-                    >
-                      {post.company}
+                    <a {...props}>
+                      { condition && <SVG 
+                        id='external'
+                        width='32'
+                        height='32'
+                      /> }
+                      {post.acf.company}
                     </a>
                   </h4>
                   <div className="job-location">{post.location}</div>
@@ -94,17 +103,21 @@ const Experience = () => {
 
                       <ul>
                         {clients.map( (client, index) => {
+
+                          const condition = client.clientUrl && client.clientUrl.length !== 0;
+
+                          const props = {
+                            ...( condition && { href: client.clientUrl } ),
+                            ...( condition ? { title: 'Opens in new tab' } : {} ),
+                            ...( condition && { rel: 'noopener' } ),
+                            ...( condition && { target: '_blank' } ),
+                          };
                           return (
                             <li 
                               className="list-inline-item"
                               key={'client-' + index}
                             >
-                              <a
-                                href={client.clientUrl}
-                                title={parse(client.clientName)}
-                                rel="noreferrer"
-                                target="_blank"
-                              >
+                              <a {...props}>
                                 {parse(client.clientName)}
                               </a>
                             </li>
@@ -115,7 +128,6 @@ const Experience = () => {
                   )}
                 </div>
 
-                <footer className="entry-footer"></footer>
               </article>
             )
           } )}

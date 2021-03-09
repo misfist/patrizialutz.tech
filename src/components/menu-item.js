@@ -1,10 +1,26 @@
 import React from "react"
-// import { CreateLocalLink } from "../utils"
-import { Link } from "gatsby"
+import { SVG } from '../utils/sprites'
 
 const MenuItem = ({ menuItem }) => {
+
+  const condition = menuItem.target === '_blank';
+
+  const props = {
+    href: menuItem.url,
+    ...( condition ? { title: 'Opens in new tab' } : {} ),
+    ...( condition && { rel: 'noopener' } ),
+    ...( condition && { target: '_blank' } ),
+  };
+
   return (
-    <Link className="menu-item" to={ menuItem.url }>{ menuItem.label }</Link>
+    <a {...props}>
+      <SVG 
+          id={menuItem.cssClasses}
+          width='32'
+          height='32'
+        />
+      <span className="menu-label">{ menuItem.label }</span>
+    </a>
   )
 }
 
