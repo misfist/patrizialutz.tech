@@ -8,6 +8,8 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 import { SVG } from '../utils/sprites'
+import BackgroundImage from 'gatsby-background-image'
+import styled from 'styled-components'
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
@@ -16,8 +18,10 @@ const Projects = () => {
       nodes {
         title
         content
-        link
         slug
+        company
+        url
+        databaseId
         featuredImage {
           node {
             title
@@ -28,11 +32,14 @@ const Projects = () => {
               height
               width
             }
+            localFile {
+              childImageSharp {
+                fluid(quality: 9, maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
-        }
-        acf {
-          company
-          url
         }
       }
     }
@@ -58,42 +65,41 @@ const Projects = () => {
         <div className="post-list post-list__projects">
           {posts.map(post => {
             const featuredImage = post.featuredImage.node
+            const imageData = post.featuredImage.node.localFile.childImageSharp.fluid
 
-            const props = {}
+            const style = {
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }
 
             return (
-              <article
-                key={post.slug}
-                id={post.slug}
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <div className="hovereffect">
-                  <img
-                    src={featuredImage.sourceUrl}
-                    className="img-responsive responsive--full wp-post-image"
-                    alt=""
-                    srcSet={featuredImage.srcSet}
-                    sizes={featuredImage.sizes}
-                    loading="lazy"
-                    title={post.title}
-                  />
-                  <div className="overlay">
-                    <h3 className="entry-title">
-                        <a href={post.acf.url} title={parse(post.title)} rel="noreferrer" target="_blank">
-                          {parse(post.title)}
-                          <SVG 
-                            id='external'
-                            width='32'
-                            height='32'
-                          />
-                        </a>
-                      </h3>
-                    <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.content }} />
-                  </div>
-                </div>
-              </article>
+              <>
+                  <BackgroundImage
+                    Tag="article"
+                    id={post.databaseId}
+                    key={post.databaseId}
+                    itemType="https://schema.org/Article"
+                    className={'post-list-item'}
+                    fluid={imageData}
+                    style={style}
+                  >
+                    <div class="overlay">
+                      <a href={post.url} title={parse(post.title)} rel="noreferrer" target="_blank">
+                        <h3 className="entry-title">
+                            {parse(post.title)}
+                            <SVG 
+                              id='external'
+                              width='20'
+                              height='20'
+                            />
+                        </h3>
+                        <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.content }} />                      
+                      </a>
+                    </div>
+
+                  </BackgroundImage>
+              </>
             )
           })}
         </div>
