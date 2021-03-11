@@ -10,8 +10,30 @@
             }
         }
 
+        fieldset {
+            @include flex;
+            flex-direction: column;
+        }
+
         label {
             color: $color__white;
+            margin-top: $size__spacing-2;
+        }
+
+        button[type="submit"] {
+            justify-self: center;
+            padding: $size__spacing-2 $size__spacing-4;
+            border: 2px solid $color__white;
+            background-color: transparent;
+            color: $color__white;
+            text-transform: uppercase;
+            max-width: 25%;
+            margin-right: auto;
+            margin-left: auto;
+
+            &:hover {
+                background-color: rgba( $color__white, .2 );
+            }
         }
     }
 }

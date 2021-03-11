@@ -11,10 +11,6 @@
 .main-navigation {
     background-color: $color__primary;
 
-    &.sticky {
-        box-shadow: 2px 2px 5px 0 rgba($color__black,.75);
-    }
-
     ul {
         max-width: $site__width_2x-large;
         margin: 0 auto;
@@ -24,15 +20,21 @@
         
         li {
             margin: 0 $size__spacing-2;
+            width: calc( (100% / 2) - #{$size__spacing-4} );
+            text-align: center;
         }
 
         a {
             color: $color__white;
             padding: $size__spacing-4 $size__spacing-2;
-            display: inline-flex;
+            display: block;
             align-self: center;
             line-height: 1;
             text-decoration: none;
+            
+            &:hover {
+                background-color: rgba( $color__white, 0.1 );
+            }
 
             span {
                 border-bottom: 1px solid transparent;
@@ -42,6 +44,19 @@
             }
         }
     }
+
+    @include breakpoint(mobile) {
+        ul {
+            li {
+                width: calc( 100% / 4 - #{$size__spacing-4} );
+            }
+        }
+    
+    }
+}
+
+.sticky .main-navigation {
+    box-shadow: 0px 5px 5px 0px rgba($color__black, .6);
 }
 
 .social-menu {
@@ -52,7 +67,7 @@
     a {
         display: block;
         padding: 0 .75rem;
-        color: $color__primary;
+        color: $color__gray;
         svg {
             height: 32px;
             width: 32px;

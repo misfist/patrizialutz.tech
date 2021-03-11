@@ -6,16 +6,28 @@
 
 html {
   line-height: $font__line-height-normal;
-  font-size: $font__size-base;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+
+  font-size: $font__size-base;
+
+  @include breakpoint(medium) {
+    font-size: $font__size-base;
+  }
+
+  // @include breakpoint(x-large) {
+  //   font-size: $font__size-base-large;
+  // }
 }
 
 body {
   font-family: $font__main;
-  font-size: $font__size-base;
+  // font-size: 14px;
   color: $color__text-main;
   min-height: 100vh;
+
+
   // position: relative;
 }

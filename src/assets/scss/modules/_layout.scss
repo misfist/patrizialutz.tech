@@ -4,7 +4,8 @@
 .footer-wrapper {
     margin-right: auto;
     margin-left: auto;
-    padding: $size__spacing-4;
+    padding-right: $size__spacing-6;
+    padding-left: $size__spacing-6;
 }
 
 .main-heading,
@@ -12,9 +13,24 @@
     max-width: $site__width_x-large;
 }
 
+.main-content .section {
+  padding-top: $size__spacing-6;
+  padding-bottom: $size__spacing-6;
+}
+
 .main-content .section .section-title,
 .main-content .section .section-content {
-    max-width: $size__width-content;
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include breakpoint(mobile) {
+      max-width: $size__width-content;
+    }
+}
+
+.main-content .section .section-title {
+  line-height: $font__line-height-tight;
 }
 
 .global-wrapper {

@@ -1,16 +1,28 @@
 .section {
     &__experience {
-
         background-color: $color__background-screen;
+
+        strong,
+        b {
+            color: $color__primary;
+        }
 
         article {
             display: flex;
             flex-direction: column;
         }
 
+        article + article {
+            margin-top: $size__spacing-6;
+        }
+
+        .section-title {
+            margin-top: 0;
+        }
+      
         h4 {
             line-height: $font__line-height-tight;
-            font-size: $font__size-normal;
+            // font-size: $font__size-medium;
 
             svg {
                 height: 20px;
@@ -42,26 +54,48 @@
             }
         }
 
+        .clients-list {
+            margin-top: $size__spacing-2;
+
+            @include truncate-text( 2, $font__line-height-normal );
+        }
+
         .job-description {
             ul {
                 @include no-bullets;
             }
 
             li {
-                display: inline-block;
+                display: inline;
                 &:after {
-                    content: ',';
-                    margin-right: .25rem;
+                    content: '\2219';
+                    padding-left: $size__spacing-1;
                 }
             }
 
         }
 
-    }
+        .job-location,
+        .job-dates {
+            font-style: italic;
+            display: inline-flex;
+        }
 
-    @include breakpoint( medium ) {
+        .job-dates {
+            &:before {
+                content: '\2219';
+                padding-left: $size__spacing-1;
+            }
 
-        &__experience {
+            time {
+                padding-right: $size__spacing-1;
+                padding-left: $size__spacing-1;
+            }
+        }
+
+
+        @include breakpoint( medium ) {
+
             article {
                 flex-direction: row;
             }
@@ -75,6 +109,25 @@
                 width: calc( ( 100% / 4 ) * 3 );
                 padding-left: 1rem;
             }
+
+            .job-location,
+            .job-dates {
+                display: block;
+            }
+
+            .job-dates {
+                &:before {
+                    content: none;
+                    padding-left: initial;
+                }
+    
+                time {
+                    &:first-of-type {
+                        padding-left: 0;
+                    }
+                }
+            }
         }
+
     }
 }

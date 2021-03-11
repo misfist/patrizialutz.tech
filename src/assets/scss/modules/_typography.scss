@@ -7,9 +7,22 @@
   h5,
   h6 {
     font-family: $font__headings;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: $size__spacing-1;
+    margin-bottom: $size__spacing-1;
     line-height: $font__line-height-normal;
+
+    font-size: $font__size-base-small;
+
+    @include breakpoint(medium) {
+      margin-top: $size__spacing-2;
+      margin-bottom: $size__spacing-2;
+    }
+
+    @include breakpoint(medium) {
+      margin-top: $size__spacing-2;
+      margin-bottom: $size__spacing-2;
+    }
+
   }
   
   h2,
@@ -22,7 +35,6 @@
   }
   
   h1 {
-    font-weight: $font__line-height-normal;
     font-size: $font__size-2xl;
     color: $font__headings;
   }
@@ -32,19 +44,21 @@
   }
   
   h3 {
-    font-size: $font__size-medium;
+    font-size: $font__size-large;
   }
   
   h4 {
-    font-size: $font__size-normal;
+    font-size: $font__size-medium;
   }
   
   h5 {
-    font-size: var(--size__font-2);
+    font-size: $font__size-small;
+    font-weight: $font__weight-bold;
   }
   
   h6 {
-    font-size: var(--size__font-1);
+    font-size: $font__size-small;
+    font-style: italic;
   }
   
   h1 > a {

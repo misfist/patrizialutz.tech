@@ -2,10 +2,19 @@
     &__expertise {
         ul {
             @include no-bullets;
+            margin-top: 0;
 
-            li {}
+            li {
+                margin-bottom: 0;
+            }
 
             ul {
+                margin-bottom: $size__spacing-4;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
                 li {
                     border-bottom: 1px solid rgba( $color__primary, 0.3 );
                 }

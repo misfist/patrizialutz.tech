@@ -12,7 +12,9 @@
     background-image: linear-gradient(
         rgba($color__primary, 0.45), 
         rgba($color__primary, 0.45)
-      ),
+    );
+
+    transition: all 2s linear;
 }
 
 .sticky-wrapper {
@@ -32,15 +34,18 @@
   
 .main-heading {
     margin-top: 0;
-    padding: $size__spacing-24;
+    padding: $size__spacing-8;
     color: $color__white;
     text-align: center;
+
+    text-shadow: 0 1px 0 $color__black;
 
     .site-title {
         margin-top: 0;
         padding-top: $size__spacing-6;
-        font-size: $font__size-2xl;
-        font-weight: $font__weight-bold;
+        font-size: $font__size-xl;
+        font-weight: $font__weight-normal;
+        line-height: $font__line-height-none;
 
         a {
             color: $color__white;
@@ -48,13 +53,32 @@
     }
 
     .site-description {
-        font-size: $font__size-medium;
+        font-size: $font__size-normal;
         font-family: $font__main;
         font-weight: $font__weight-normal;
-        line-height: $font__line-height-tight;
+        line-height: $font__line-height-normal;
     }
 
     @include breakpoint( 2x-large ) {
         padding: $size__spacing-24 $size__spacing-0;
+
+        .site-title {
+            font-size: $font__size-2xl;
+        }
+
+        .site-title {}
+    
+        .site-description {
+            font-size: $font__size-medium;
+            line-height: $font__line-height-tight;
+            
+        }
+    }
+}
+
+/* Stop the jump */
+.is-stuck {
+    .main-content {
+        padding-top: 49px;
     }
 }

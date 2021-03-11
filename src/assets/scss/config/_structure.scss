@@ -6,7 +6,7 @@
     small: 24rem,
     mobile: 620px,
     tablet: 790px,
-    medium: 54rem,
+    medium: 54rem, // 864
     large: 57rem, // 912
     x-large: 66rem, //1056
     2x-large: 75rem, //1200
@@ -17,11 +17,11 @@
 
 $breakpoints: (
     x-small: 0,
-    small: 58px,
     mobile: 580px,
     tablet: 750px,
-    medium: 52rem,
-    large: 55rem,
+    small: 40rem, //640s
+    medium: 52rem, //832
+    large: 58rem, //928
     x-large: 64rem, //1056
     2x-large: 73rem, //1200
     3x-large: 80rem, //1312

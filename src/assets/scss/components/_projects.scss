@@ -1,18 +1,123 @@
 .section {
     &__projects {
+        background-color: $color__background-screen;
+        
         .post-list {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             row-gap: $size__spacing-4;
-            column-gap: $size__spacing-4;
+
+            * {
+                max-width: 100%;
+            }
         }
+        
+        .post-list-item {
+            
+            color: transparent;
+            color: $color__white;
+            @include flex;
+            // align-items: center;
+            justify-content: center;
+
+            padding-top: calc( 3 / 4 * 100% );
+            box-shadow: 0px 5px 5px 0px rgba($color__black, .2);
+
+            a,
+            h3,
+            p {
+                color: transparent;
+                text-decoration: none;
+            }
+
+            a {
+                display: block;
+            }
+
+            .overlay {
+                transition: all .3s linear;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                padding: $size__spacing-6 $size__spacing-6;
+                background-color: transparent;
+            }
+
+            .entry-title,
+            .entry-content {
+                width: 0;
+                max-width: 0;
+            }
+
+            .entry-title {
+                font-size: $font__size-medium;
+                line-height: $font__line-height-tight;
+
+
+                &:after {
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: $size__spacing-4;
+                    padding-bottom: $size__spacing-4;
+                    content: '';
+                    display: block;
+                    border-bottom: 1px solid transparent;
+                    width: 0;
+                }
+
+                svg {
+                    margin-left: $size__spacing-1;
+                    flex-shrink: 0;
+                    flex-grow: 0;
+                    height: 1rem;
+                    width: 1rem;
+                }
+            }
+
+            .entry-content {
+                @include truncate-text(5, $font__line-height-tight);
+                p {
+                    line-height: $font__line-height-tight;
+                    margin-bottom: 0;
+                }
+            }
+
+            &:hover {
+                .overlay {
+                    background-color: rgba( $color__primary, .9 );
+                }
+
+                .entry-title,
+                .entry-content {
+                    width: 100%;
+                    max-width: 100%;
+                }
+
+                .entry-title {
+                    &:after {
+                        border-bottom-color: $color__white;
+                        width: 60%;
+                    }
+                }
+
+                a,
+                h3,
+                p {
+                    color: $color__white;
+                }
+            }
+        }
+
+
     }
 
-    @include breakpoint( tablet ) {
+    @include breakpoint( mobile ) {
         &__projects {
             .post-list {
-                display: grid;
                 grid-template-columns: repeat(2, 1fr);
+                column-gap: $size__spacing-4;
             }
         }
     }
