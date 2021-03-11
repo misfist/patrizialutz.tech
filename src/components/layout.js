@@ -1,7 +1,7 @@
-import React from "react"
-import "../assets/scss/styles.scss"
+import React from 'react';
 import Header from './header';
 import Footer from './footer';
+import "../assets/scss/styles.scss"
 
 const Layout = ({ isHomePage, children }) => {
 
