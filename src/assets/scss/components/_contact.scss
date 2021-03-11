@@ -20,6 +20,11 @@
             margin-top: $size__spacing-2;
         }
 
+        .error {
+            color: $color__white;
+            font-size: $font__size-small;
+        }
+
         button[type="submit"] {
             justify-self: center;
             padding: $size__spacing-2 $size__spacing-4;
