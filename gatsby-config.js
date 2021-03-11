@@ -6,20 +6,30 @@
  *
  */
 
-require("dotenv").config({
-  path: `.env`,
-})
+// require("dotenv").config({
+//   path: `.env`,
+// })
 
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`, // or '.env'
-});
+// require('dotenv').config({
+//   path: `.env.${process.env.NODE_ENV}`, // or '.env'
+// });
+
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+
+  console.log(`Using environment config: '${activeEnv}'`)
+
+  require("dotenv").config({
+    path: `.env.${activeEnv}`,
+  })
+
 
 const config = require('gatsby-plugin-config');
 
 module.exports = {
   siteMetadata: {
     title: `Patrizia Lutz - WordPress Developer`,
-    siteUrl: `https://patrizialutz.tech`,
+    siteUrl: process.env.WEBSITE_URL,
     description: `Web Developer specializing in WordPress, and free and open-source technology.`,
   },
   /**
@@ -120,6 +130,17 @@ module.exports = {
           camelCase: false,
         },
         useResolveUrlLoader: true,
+      },
+    },
+
+    {
+      // See https://www.gatsbyjs.com/plugins/gatsby-plugin-htaccess/
+      resolve: 'gatsby-plugin-htaccess',
+      options: {
+        https: true,
+        www: false,
+        SymLinksIfOwnerMatch: true,
+        host: process.env.WEBSITE_DOMAIN, // if 'www' is set to 'false', be sure to also remove it here!
       },
     },
 

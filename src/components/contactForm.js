@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 const ContactForm = () => {
 
     const FORM_ID = "983"
-    const WEBSITE_URL = process.env.WEBSITE_URL
+    const WP_URL = process.env.WP_URL
     const API_USER = process.env.API_USER
     const API_KEY = process.env.API_KEY
     const USER_PASS = process.env.USER_PASS
@@ -27,7 +27,7 @@ const ContactForm = () => {
     const getAuthenticationToken = useCallback(() => {
         axios({
             method: "post",
-            url: `${WEBSITE_URL}/wp-json/jwt-auth/v1/token`,
+            url: `${WP_URL}/wp-json/jwt-auth/v1/token`,
             data: {
                 username: API_USER,
                 password: USER_PASS
@@ -38,12 +38,11 @@ const ContactForm = () => {
         })
         .then(response => {
             setToken( response.data.token )
-            console.log( response.data.token )
         })
         .catch( error => {
             console.error( "Error", error )
         } )
-    }, [WEBSITE_URL, API_USER, USER_PASS]) 
+    }, [WP_URL, API_USER, USER_PASS]) 
 
     useEffect( () => {
         getAuthenticationToken()
@@ -76,7 +75,7 @@ const ContactForm = () => {
 
         axios({
             method: "post",
-            url: `${WEBSITE_URL}/wp-json/contact-form-7/v1/contact-forms/${FORM_ID}/feedback`,
+            url: `${WP_URL}/wp-json/contact-form-7/v1/contact-forms/${FORM_ID}/feedback`,
             data: formData,
             headers: {
                 Authorization: `Bearer ${token}`,
