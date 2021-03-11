@@ -13,7 +13,7 @@ const Experience = () => {
   const data = useStaticQuery(
     graphql`
     {
-      allWpPortfolio(sort: {order: DESC, fields: date}, filter: {portfolioTypes: {nodes: {elemMatch: {slug: {eq: "job"}}}}}) {
+      allWpPortfolio(sort: {order: DESC, fields: date}, filter: {portfolioTypes: {nodes: {elemMatch: {slug: {eq: "job"}}}}}, limit: 6) {
         nodes {
           acf {
             clients {
@@ -94,7 +94,7 @@ const Experience = () => {
                 </header>
 
                 <div className="entry-content">
-                  <h5 className="job-title">{post.title}</h5>
+                  <h4 className="job-title">{post.title}</h4>
                   <div className="job-description" dangerouslySetInnerHTML={{ __html: post.content }} />
 
                   {clients && (
