@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import MenuItem from "./menu-item"
 
 const MainMenu = () => {
@@ -54,7 +54,13 @@ const MainMenu = () => {
                   id={`menu-item-${menuItem.databaseId}`}
                   className="menu-item"
                 >
-                <MenuItem menuItem={menuItem} />
+                <Link
+                  to={menuItem.url}
+                  activeClassName="active"
+                  partiallyActive={true}
+                >
+                  {menuItem.label}
+                </Link>
               </li>
               )
             } )}
