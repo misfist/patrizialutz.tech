@@ -9,33 +9,48 @@ import { useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 import { SVG } from '../utils/sprites'
 import BackgroundImage from 'gatsby-background-image'
-import styled from 'styled-components'
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
   {
-    allWpPortfolio(filter: {portfolioTypes: {nodes: {elemMatch: {slug: {eq: "project"}}}}}, limit: 6, sort: {fields: menuOrder, order: ASC}) {
+    allWpProject(
+      filter: {
+        projectTypes: {
+          nodes: {
+            elemMatch: {
+              slug: {
+                eq: "project"
+              }
+            }
+          }
+        }
+      }, 
+      sort: {
+        fields: menuOrder, order: ASC
+      }, 
+      limit: 6 ) {
       nodes {
         title
-        content
         slug
-        company
-        url
+        excerpt
         databaseId
+        acf {
+          company
+          url
+          location
+          clients {
+            clientName
+            clientUrl
+          }
+          startDate
+          endDate
+        }
         featuredImage {
           node {
-            title
-            srcSet
-            sourceUrl
-            sizes
-            mediaDetails {
-              height
-              width
-            }
             localFile {
               childImageSharp {
-                fluid(quality: 9, maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid_withWebp
+                fluid {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -43,9 +58,10 @@ const Projects = () => {
         }
       }
     }
+
   }
   `)
-  const posts = data.allWpPortfolio.nodes
+  const posts = data.allWpProject.nodes
 
   if( !posts.length ) {
     return (
@@ -64,13 +80,19 @@ const Projects = () => {
       <div className="section-content">
         <div className="post-list post-list__projects">
           {posts.map(post => {
-            const featuredImage = post.featuredImage.node
             const imageData = post.featuredImage.node.localFile.childImageSharp.fluid
 
             const style = {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
+            }
+
+            const linkProps = {
+              href: post.acf.url && typeof post.acf.url == 'string' ? post.acf.url : {},
+              title: parse( post.title ),
+              target: `_blank`,
+              rel: `noreferrer`
             }
 
             return (
@@ -84,8 +106,8 @@ const Projects = () => {
                     fluid={imageData}
                     style={style}
                   >
-                    <div class="overlay">
-                      <a href={post.url} title={parse(post.title)} rel="noreferrer" target="_blank">
+                    <div className="overlay">
+                      <a {...linkProps}>
                         <h3 className="entry-title">
                             {parse(post.title)}
                             <SVG 
@@ -94,7 +116,7 @@ const Projects = () => {
                               height='20'
                             />
                         </h3>
-                        <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.content }} />                      
+                        <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.excerpt }} />                      
                       </a>
                     </div>
 
