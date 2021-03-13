@@ -59,6 +59,13 @@
         line-height: $font__line-height-normal;
     }
 
+    .avatar {
+        border: 2px solid $color__white;
+        border-radius: 50%;
+        box-shadow: 0 1px 0 $color__black;
+        background-color: $color__white;
+    }
+
     @include breakpoint( 2x-large ) {
         padding: $size__spacing-24 $size__spacing-0;
 
@@ -79,6 +86,13 @@
 /* Stop the jump */
 .is-stuck {
     .main-content {
-        padding-top: 49px;
+        padding-top: calc( 64px + 24px );
+    }
+
+    @include breakpoint(mobile) {
+        .main-content {
+            // padding-top: calc( 48px + 24px );
+            padding-top: 48px;
+        }
     }
 }

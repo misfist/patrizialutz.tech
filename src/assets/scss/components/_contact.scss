@@ -12,7 +12,18 @@
 
         fieldset {
             @include flex;
-            flex-direction: column;
+            flex-direction: row;
+            max-height: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        label,
+        input,
+        text-area,
+        #g-recaptcha {
+            width: 100%;
+            max-width: 100%;
         }
 
         label {
@@ -32,13 +43,23 @@
             background-color: transparent;
             color: $color__white;
             text-transform: uppercase;
-            max-width: 25%;
+            max-width: 100%;
             margin-right: auto;
             margin-left: auto;
 
             &:hover {
                 background-color: rgba( $color__white, .2 );
             }
+        }
+    }
+
+    @include breakpoint( tablet ) {
+        fieldset {
+            max-width: 31.25rem;
+        }
+
+        button[type="submit"] {
+            max-width: 12rem;
         }
     }
 }

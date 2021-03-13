@@ -1,5 +1,12 @@
 footer {
-    &.global-footer {}
+    &.global-footer {
+        background-color: $color__black;
+        color: $color__white;
+
+        a {
+            color: $color__white;
+        }
+    }
 
     .footer-wrapper {
         text-align: center;

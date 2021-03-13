@@ -36,7 +36,6 @@
 .global-wrapper {
   margin: 0;
   max-width: $site__max-width;
-  // padding: var(--size__spacing-10) var(--size__spacing-5);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {

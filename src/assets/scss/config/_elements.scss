@@ -1,1 +1,34 @@
 $border__radius: 0;
+
+.is-style-rounded {
+    img {
+        border-radius: 50%;
+    }
+}
+
+.aligncenter {
+    text-align: center;
+    align-content: center;
+}
+
+.section-title {
+    text-align: center;
+
+    &:after {
+        display: block;
+        content: '';
+        width: 60%;
+        max-width: 600px;
+        margin: 1rem auto;
+        border-bottom: 1px solid rgba( $color__black, 0.3 );
+    }
+}
+
+.wp-block-separator {
+    text-align: center;
+    content: '';
+    width: 60%;
+    max-width: 600px;
+    margin: 1rem auto;
+    border-bottom: 1px solid rgba( $color__black, 0.3 );
+}

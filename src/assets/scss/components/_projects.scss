@@ -1,11 +1,11 @@
 .section {
     &__projects {
         background-color: $color__background-screen;
-        
+
         .post-list {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            row-gap: $size__spacing-4;
+            row-gap: $size__spacing-6;
 
             * {
                 max-width: 100%;
@@ -17,11 +17,17 @@
             color: transparent;
             color: $color__white;
             @include flex;
-            // align-items: center;
             justify-content: center;
 
             padding-top: calc( 3 / 4 * 100% );
-            box-shadow: 0px 5px 5px 0px rgba($color__black, .2);
+
+            box-shadow: 0px 5px 5px 0px rgba( $color__black, .2 );
+            // border-top: $size__spacing-6 solid $color__light-gray;
+            // border-bottom: $size__spacing-2 solid $color__light-gray;
+            // border-right: $size__spacing-1 solid $color__light-gray;
+            // border-left: $size__spacing-1 solid $color__light-gray;
+            // border: 1px solid $color__light-gray;
+            border-radius: 4px;
 
             a,
             h3,
@@ -118,11 +124,11 @@
 
     }
 
-    @include breakpoint( mobile ) {
+    @include breakpoint( small ) {
         &__projects {
             .post-list {
                 grid-template-columns: repeat(2, 1fr);
-                column-gap: $size__spacing-4;
+                column-gap: $size__spacing-6;
             }
         }
     }

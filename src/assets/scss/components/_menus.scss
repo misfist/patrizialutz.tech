@@ -45,7 +45,7 @@
         }
     }
 
-    @include breakpoint(mobile) {
+    @include breakpoint(tablet) {
         ul {
             li {
                 width: calc( 100% / 4 - #{$size__spacing-4} );
@@ -68,13 +68,22 @@
         display: block;
         padding: 0 .75rem;
         color: $color__gray;
-        svg {
-            height: 32px;
-            width: 32px;
-        }
-        span {
-            @include visually-hidden;
-        }
+
+    }
+
+    svg {
+        height: 32px;
+        width: 32px;
+        color: $color__gray;
+    }
+
+    .print {
+        padding: 0 .75rem;
+        cursor: pointer;
+    }
+
+    span {
+        @include visually-hidden;
     }
 }
 
@@ -82,9 +91,11 @@
     .social-menu {
         a {
             color: $color__white;
-            svg {
-                fill: $color__white;
-            }
+        }
+
+        svg {
+            fill: $color__white;
+            color: $color__white;
         }
     }
 }

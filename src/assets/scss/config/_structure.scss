@@ -4,7 +4,8 @@
  $widths: (
     x-small: 20rem,
     small: 24rem,
-    mobile: 620px,
+    mobile: 355px,
+    // mobile: 620px,
     tablet: 790px,
     medium: 54rem, // 864
     large: 57rem, // 912
@@ -17,7 +18,8 @@
 
 $breakpoints: (
     x-small: 0,
-    mobile: 580px,
+    // mobile: 580px,
+    mobile: 375px,
     tablet: 750px,
     small: 40rem, //640s
     medium: 52rem, //832

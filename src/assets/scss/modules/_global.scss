@@ -16,18 +16,16 @@ html {
   @include breakpoint(medium) {
     font-size: $font__size-base;
   }
-
-  // @include breakpoint(x-large) {
-  //   font-size: $font__size-base-large;
-  // }
 }
 
 body {
   font-family: $font__main;
-  // font-size: 14px;
   color: $color__text-main;
   min-height: 100vh;
+}
 
-
-  // position: relative;
+@media screen {
+  .print-only {
+    display: none !important;
+  }
 }

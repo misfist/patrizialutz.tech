@@ -22,13 +22,17 @@
       
         h4 {
             line-height: $font__line-height-tight;
-            // font-size: $font__size-medium;
 
             svg {
                 height: 20px;
                 width: 20px;
                 margin-right: .25rem;
             }
+        }
+
+        .job-title {
+            margin-top: $size__spacing-4;
+            font-size: $font__size-normal;
         }
 
         .clients-list,
@@ -56,8 +60,15 @@
 
         .clients-list {
             margin-top: $size__spacing-2;
+            
+            &__heading {
+                font-size: $font__size-normal;
+                font-weight: $font__weight-bold;
+            }
 
-            @include truncate-text( 2, $font__line-height-normal );
+            @media screen {
+                @include truncate-text( 2, $font__line-height-normal );
+            }
         }
 
         .job-description {
@@ -78,21 +89,42 @@
         .job-location,
         .job-dates {
             font-style: italic;
-            display: inline-flex;
+            font-size: $font__size-small;
         }
 
         .job-dates {
-            &:before {
-                content: '\2219';
-                padding-left: $size__spacing-1;
-            }
-
             time {
                 padding-right: $size__spacing-1;
                 padding-left: $size__spacing-1;
+
+                &:first-of-type {
+                    padding-left: 0;
+                }
             }
         }
 
+        @include breakpoint( tablet ) {
+            .job-location,
+            .job-dates {
+                display: inline-flex;
+            }
+
+            .job-dates {
+                &:before {
+                    content: '\2219';
+                    padding-left: $size__spacing-1;
+                }
+
+                time {
+                    padding-right: $size__spacing-1;
+                    padding-left: $size__spacing-1;
+
+                    &:first-of-type {
+                        padding-left: $size__spacing-1;
+                    }
+                }
+            }
+        }
 
         @include breakpoint( medium ) {
 
@@ -108,6 +140,11 @@
             .entry-content {
                 width: calc( ( 100% / 4 ) * 3 );
                 padding-left: 1rem;
+            }
+
+            .job-title {
+                margin-top: 0;
+                font-size: $font__size-medium;
             }
 
             .job-location,
@@ -127,6 +164,7 @@
                     }
                 }
             }
+    
         }
 
     }

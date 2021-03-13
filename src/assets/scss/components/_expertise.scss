@@ -6,6 +6,10 @@
 
             li {
                 margin-bottom: 0;
+
+                h4 {
+                    margin-top: $size__spacing-4;
+                }
             }
 
             ul {
@@ -22,7 +26,7 @@
         }
     }
 
-    @include breakpoint(mobile) {
+    @include breakpoint(tablet) {
         &__expertise {
             ul {
     
