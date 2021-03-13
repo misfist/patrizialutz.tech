@@ -1,0 +1,217 @@
+@media print {
+    body {
+        margin: 0 auto; /* for centering, feel free to use flexbox or some other method*/
+        box-sizing: border-box;
+        padding: 0.4in; /* controls margins */
+        width: 8.5in;
+        height: 11in;
+        background-color: $color__white;
+        font-size: 12pt;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a {
+        color: $color__black;
+    }
+
+    p,
+    li,
+    figure,
+    blockquote {
+        page-break-inside: avoid;
+    }
+    
+    .section-title {
+        font-size: $font__size-large;
+    }
+
+    .global-header {
+        background: none !important;
+    }
+
+    .main-heading {
+        padding: 0;
+        margin-bottom: .25in;
+
+        a,
+        .site-title,
+        .site-title a,
+        .site-description {
+            color: $color__black;
+            text-shadow: none;
+        }        
+        .avatar {
+            box-shadow: none;
+            border-color: $color__black;
+            border-width: 1pt;
+            height: 1.25in;
+            width: 1.25in;
+        }
+
+        .contact-details {
+            display: table;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+
+            .contact-email,
+            .contact-website {
+                display: table-cell;
+                // padding: 0 10pt;
+            }
+
+            .contact-website {
+                padding-right: 5pt;
+            }
+
+            .contact-email {
+                border-left: 1pt solid $color__black;
+                padding-left: 5pt;
+            }
+        }
+    }
+
+    .main-content {
+        a[href] {
+            &:after {
+                content: " (" attr(href) ")";
+            }
+        
+        }
+    }
+
+    .section {
+        background-color: transparent;
+
+        &__projects {
+            display: block;
+
+            .post-list {
+                display: block;
+            }
+    
+            .post-list-item {
+                background: none !important;
+                box-shadow: none;
+                padding: 0;
+                display: block;
+                margin-bottom: .25in;
+    
+                &:before,
+                &:after {
+                    background: none !important;
+                }
+    
+                a,
+                h3,
+                p {
+                    color: $color__black;
+                    
+                }
+    
+                a {
+                    text-decoration: none;
+                }
+    
+                .overlay {
+                    position: initial;
+                    padding: 0;
+                }
+    
+                .entry-title,
+                .entry-content {
+                    width: 100%;
+                    max-width: 100%;
+                    max-height: 500px;
+                    overflow: visible;
+                }
+    
+                .entry-title {
+    
+                    &:after {
+                        border: none;
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+    
+                &:hover {
+    
+                    a,
+                    h3,
+                    p {
+                        color: $color__black;
+                    }
+        
+                    a {
+                        text-decoration: none;
+                    }
+    
+                    .entry-title {
+                        &:after {
+                            border-bottom-color: $color__black;
+                            width: 60%;
+                        }
+                    }
+    
+                    .overlay {
+                        background-color: unset;
+                    }
+                    
+                }
+            }
+        }
+
+        &__experience {
+            article {
+                display: block;
+            }
+        }
+
+        &__expertise {
+            ul {
+                columns: 2;
+                -webkit-columns: 2;
+                -moz-columns: 2;
+                column-gap: 4rem;
+
+                h4 {
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                }
+
+                li {
+                    -webkit-column-break-inside: avoid;
+                    page-break-inside: avoid;
+                        break-inside: avoid;
+                }
+
+                ul {
+                    columns: unset;
+                    margin-bottom: .25in !important;
+                }
+            }
+        }
+    }
+
+    aside, 
+    nav, 
+    form, 
+    iframe,
+    img,
+    svg,
+    .menu, 
+    .hero,
+    .main-navigation,
+    .social-menu,
+    .section__contact,
+    .global-footer {
+        display: none !important;
+    }
+}
