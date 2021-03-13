@@ -5,7 +5,6 @@ const Footer = () => {
 
   return (
     <footer className="global-footer">
-      <SVGSource />
       <div className="footer-wrapper">
         © {new Date().getFullYear()}, Proudly Built with
         {` `}
@@ -13,6 +12,7 @@ const Footer = () => {
         {` `}
         And <a href="https://wordpress.org/" target="_blank" rel="noreferrer">WordPress</a>  
       </div>
+      <SVGSource />
    </footer>
   )
 }

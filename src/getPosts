@@ -1,0 +1,70 @@
+import React from "react"
+import { graphql } from "gatsby"
+
+const ComponentName = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
+
+export const query = graphql`
+  {
+
+    allWpPage(
+        sort: {
+            order: ASC, fields: menuOrder
+        }) {
+      edges {
+        next {
+          id
+        }
+        previous {
+          id
+        }
+        node {
+          uri
+          id
+        }
+      }
+    }
+    allWpPost(
+        sort: {
+            fields: date, order: DESC
+        }) {
+      edges {
+        node {
+          id
+          uri
+        }
+        next {
+          id
+        }
+        previous {
+          id
+        }
+      }
+    }
+    allWpProject(
+        sort: {
+            fields: menuOrder, order: ASC
+        }) {
+      edges {
+        next {
+          id
+        }
+        previous {
+          id
+        }
+        node {
+          uri
+          id
+          projectTypes {
+            nodes {
+              slug
+            }
+          }
+        }
+      }
+    }
+
+  }
+`
+
+export default ComponentName
+

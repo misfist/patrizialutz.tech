@@ -23,7 +23,6 @@ const activeEnv =
     path: `.env.${activeEnv}`,
   })
 
-
 const config = require('gatsby-plugin-config');
 
 module.exports = {
@@ -50,8 +49,6 @@ module.exports = {
        */
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: process.env.WP_BASE_URL,
-        protocol: `https`,
         url:
           process.env.WPGRAPHQL_URL ||
           `https://editor.patrizialutz.tech/graphql`,
@@ -59,7 +56,6 @@ module.exports = {
           requestConcurrency: 6, // currently set to 15
           previewRequestConcurrency: 2, // currently set to 5
         },
-        useACF: true,
         verbose: true,
         debug: {
           preview: true,
@@ -84,6 +80,13 @@ module.exports = {
         path: `${__dirname}/src/assets`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/img`,
+      },
+    },
 
     /**
      * The following two plugins are required if you want to use Gatsby image
@@ -104,7 +107,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#0b4f6c`,
         display: `browser`,
-        icon: `src/assets/img/sneaky-cat.png`,
+        icon: `src/assets/img/sneaky-cat-transparent.png`,
       },
     },
 

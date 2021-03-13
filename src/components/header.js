@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby'
+// import Img from 'gatsby-image'
+import avatar from '../assets/img/sneaky-cat-transparent.png'
 import parse from 'html-react-parser'
 import Helmet from 'react-helmet'
 import MainMenu from './menu'
 import SocialMenu from './menu-social'
-import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
 
 const Header = ( { data } ) => {
   const [isSticky, setSticky] = useState( false );
@@ -33,17 +33,20 @@ const Header = ( { data } ) => {
         title, 
         description, 
         url,
-        customHeaders
+        customHeaders,
+        contactEmail
       },
     },
   } = useStaticQuery(graphql`
     query HeaderQuery {
+
       wp {
         generalSettings {
           title
           description
           url
           customHeaders
+          contactEmail
         }
       }
     }
@@ -69,10 +72,19 @@ const Header = ( { data } ) => {
           <h1 className="site-title">
             <a href={process.env.WEBSITE_URL}>{parse(title)}</a>
           </h1>
+          <img 
+            src={avatar} 
+            alt="Avatar"
+            className="avatar"
+          />
           <div
             className="site-description"
             dangerouslySetInnerHTML={{ __html: description }}
           ></div>
+          <div className="contact-details print-only">
+            <div className="contact-website"><a href={process.env.WEBSITE_URL}>{parse(process.env.WEBSITE_URL)}</a></div>
+            <div className="contact-email"><a href={`mailto:#${contactEmail}`}>{parse(contactEmail)}</a></div>
+          </div>
           <SocialMenu />
         </div>
 

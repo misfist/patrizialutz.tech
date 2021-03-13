@@ -3,16 +3,4 @@
 @import './modules/modules';
 @import './components/components';
 
-
-
-
-  /* Links */
-  a {
-    color: $color__primary;
-    word-break: break-word;
-  }
-  
-  a:hover,
-  a:focus {
-    text-decoration: none;
-  }
+@import './modules/print';

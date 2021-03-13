@@ -13,7 +13,21 @@ const Experience = () => {
   const data = useStaticQuery(
     graphql`
     {
-      allWpPortfolio(sort: {order: DESC, fields: date}, filter: {portfolioTypes: {nodes: {elemMatch: {slug: {eq: "job"}}}}}, limit: 6) {
+      allWpProject(
+        sort: {
+          order: DESC, fields: date
+        }, filter: {
+          projectTypes: {
+            nodes: {
+              elemMatch: {
+                slug: {
+                  eq: "job"
+                }
+              }
+            }
+          }
+        }, 
+        limit: 6) {
         nodes {
           acf {
             clients {
@@ -22,7 +36,6 @@ const Experience = () => {
             }
             company
             endDate
-            fieldGroupName
             url
             location
             startDate
@@ -30,14 +43,13 @@ const Experience = () => {
           slug
           content
           title
-          location
         }
       }
     }
     `
   )
   
-  const posts = data.allWpPortfolio.nodes
+  const posts = data.allWpProject.nodes
 
   if( !posts.length ) {
     return (
@@ -86,7 +98,7 @@ const Experience = () => {
                       {post.acf.company}
                     </a>
                   </h4>
-                  <div className="job-location">{post.location}</div>
+                  <div className="job-location">{post.acf.location}</div>
                   <div className="job-dates">
                     <time className="start-date">{post.acf.startDate}</time> to
                     <time className="end-date">{post.acf.endDate ? post.acf.endDate : 'Present'}</time>
@@ -99,7 +111,7 @@ const Experience = () => {
 
                   {clients && (
                     <div className="clients-list">
-                      <strong>Clients</strong>
+                      <h4 className="clients-list__heading">Clients</h4>
 
                       <ul>
                         {clients.map( (client, index) => {

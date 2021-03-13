@@ -1,0 +1,99 @@
+import React from "react"
+import { graphql } from "gatsby"
+
+const ComponentName = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
+
+export const query = graphql`
+  {
+    allWpPage(sort: {order: ASC, fields: menuOrder}) {
+      nodes {
+        acf {
+          skillsGroup {
+            section
+            skills {
+              skill
+            }
+          }
+        }
+        databaseId
+        id
+        title
+        uri
+        slug
+        content
+        isFrontPage
+      }
+    }
+    allWpPost(sort: {fields: date, order: DESC}) {
+      edges {
+        node {
+          id
+          title
+          uri
+          slug
+          link
+          databaseId
+          date(formatString: "MMMM DD, YYYY")
+          content
+          excerpt
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    base64
+                    tracedSVG
+                    srcWebp
+                    srcSetWebp
+                    originalImg
+                    originalName
+                  }
+                }
+              }
+            }
+          }
+        }
+        next {
+          id
+          uri
+          title
+        }
+        previous {
+          id
+          uri
+          title
+        }
+      }
+    }
+    allWpProject(filter: {}, skip: 10, sort: {fields: menuOrder, order: ASC}) {
+      nodes {
+        title
+        slug
+        databaseId
+        acf {
+          company
+          url
+        }
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                fluid {
+                  base64
+                  tracedSVG
+                  srcWebp
+                  srcSetWebp
+                  originalImg
+                  originalName
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default ComponentName
+
