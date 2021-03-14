@@ -10,56 +10,34 @@
             }
         }
 
-        fieldset {
-            @include flex;
-            flex-direction: row;
-            max-height: 100%;
-            margin-right: auto;
-            margin-left: auto;
-        }
+        .contact-form {
+            fieldset {}
 
-        label,
-        input,
-        text-area,
-        #g-recaptcha {
-            width: 100%;
-            max-width: 100%;
-        }
+            label,
+            input,
+            text-area,
+            #g-recaptcha {}
 
-        label {
-            color: $color__white;
-            margin-top: $size__spacing-2;
-        }
-
-        .error {
-            color: $color__white;
-            font-size: $font__size-small;
-        }
-
-        button[type="submit"] {
-            justify-self: center;
-            padding: $size__spacing-2 $size__spacing-4;
-            border: 2px solid $color__white;
-            background-color: transparent;
-            color: $color__white;
-            text-transform: uppercase;
-            max-width: 100%;
-            margin-right: auto;
-            margin-left: auto;
-
-            &:hover {
-                background-color: rgba( $color__white, .2 );
+            label {
+                color: $color__white;
             }
+
+            .error {
+                color: $color__white;
+            }
+
+            button[type="submit"] {
+                border: 2px solid $color__white;
+                color: $color__white;
+
+                &:hover {
+                    background-color: rgba( $color__white, .2 );
+                }
+            }            
         }
+
+
+
     }
 
-    @include breakpoint( tablet ) {
-        fieldset {
-            max-width: 31.25rem;
-        }
-
-        button[type="submit"] {
-            max-width: 12rem;
-        }
-    }
 }

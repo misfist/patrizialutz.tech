@@ -1,34 +1,32 @@
 $border__radius: 0;
+$spacing: (
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    8: 2rem,
+    10: 2.5rem,
+    12: 3rem,
+    16: 4rem,
+    20: 5rem,
+    24: 6rem,
+    32: 8rem,
+);
 
-.is-style-rounded {
-    img {
-        border-radius: 50%;
-    }
-}
-
-.aligncenter {
-    text-align: center;
-    align-content: center;
-}
-
-.section-title {
-    text-align: center;
-
-    &:after {
-        display: block;
-        content: '';
-        width: 60%;
-        max-width: 600px;
-        margin: 1rem auto;
-        border-bottom: 1px solid rgba( $color__black, 0.3 );
-    }
-}
-
-.wp-block-separator {
-    text-align: center;
-    content: '';
-    width: 60%;
-    max-width: 600px;
-    margin: 1rem auto;
-    border-bottom: 1px solid rgba( $color__black, 0.3 );
-}
+$size__spacing-0: map-get( $spacing, 0 );
+$size__spacing-1: map-get( $spacing, 1 );
+$size__spacing-2: map-get( $spacing, 2 );
+$size__spacing-3: map-get( $spacing, 3 );
+$size__spacing-4: map-get( $spacing, 4 );
+$size__spacing-5: map-get( $spacing, 5 );
+$size__spacing-6: map-get( $spacing, 6 );
+$size__spacing-8: map-get( $spacing, 8 );
+$size__spacing-10: map-get( $spacing, 10 );
+$size__spacing-12: map-get( $spacing, 12 );
+$size__spacing-16: map-get( $spacing, 16 );
+$size__spacing-20: map-get( $spacing, 20 );
+$size__spacing-24: map-get( $spacing, 24 );
+$size__spacing-32: map-get( $spacing, 32 );

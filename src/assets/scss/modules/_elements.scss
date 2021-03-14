@@ -94,4 +94,40 @@ a:focus {
     list-style-position: inside;
   }
 }
-  
+
+
+
+.is-style-rounded {
+  img {
+      border-radius: 50%;
+  }
+}
+
+.aligncenter {
+  text-align: center;
+  align-content: center;
+}
+
+.wp-block-separator {
+  text-align: center;
+  content: '';
+  width: 60%;
+  max-width: 600px;
+  margin: 1rem auto;
+  border-bottom: 1px solid rgba( $color__black, 0.3 );
+}
+
+
+.section-title,
+h1.entry-title {
+  text-align: center;
+
+  &:after {
+      display: block;
+      content: '';
+      width: 60%;
+      max-width: 600px;
+      margin: $size__spacing-8 auto;
+      border-bottom: 1px solid rgba( $color__black, 0.3 );
+  }
+}

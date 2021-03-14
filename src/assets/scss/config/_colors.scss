@@ -20,6 +20,7 @@
      primary: #0b4f6c,
      secondary: #05222e,
      accent: #ecf8f8,
+     error: #cc0000,
      dark-gray: $color__black-80,
      gray: $color__black-60,
      light-gray: $color__black-20,
@@ -28,6 +29,7 @@
  $color__primary: map-get( $color__palette, primary );
  $color__secondary: map-get( $color__palette, secondary );
  $color__accent: map-get( $color__palette, accent );
+ $color__error: map-get( $color__palette, error );
  $color__dark-gray: map-get( $color__palette, dark-gray );
  $color__gray: map-get( $color__palette, gray );
  $color__light-gray: map-get( $color__palette, light-gray );

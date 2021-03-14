@@ -1,6 +1,7 @@
 .main-heading,
 .main-content .section .section-title,
 .main-content .section .section-content,
+.main-content .post-navigation,
 .footer-wrapper {
     margin-right: auto;
     margin-left: auto;
@@ -9,13 +10,25 @@
 }
 
 .main-heading,
+.main-content .post-navigation,
 .footer-wrapper {
     max-width: $site__width_x-large;
 }
 
 .main-content .section {
+  scroll-snap-margin-top:  calc( 96px + 1rem );
+  scroll-margin-top: calc( 96px + 1rem );
+
   padding-top: $size__spacing-6;
   padding-bottom: $size__spacing-6;
+
+  @include breakpoint(tablet) {
+    scroll-snap-margin-top: calc( 48px + 1rem );
+    scroll-margin-top: calc( 48px + 1rem );
+
+    padding-top: $size__spacing-12;
+    padding-bottom: $size__spacing-12;
+  }
 }
 
 .main-content .section .section-title,
