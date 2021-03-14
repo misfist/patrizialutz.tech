@@ -2,28 +2,35 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Section from '../components/section'
 import Profile from "../components/profile"
 import Experience from "../components/experience"
 import Expertise from "../components/expertise"
-import ContactForm from "../components/contactForm"
+import Contact from "../components/contact"
 import Projects from "../components/projects"
 
 const Home = ({ data }) => {
 
   return (
-    <Layout isHomePage>
+    <Layout isHomePage="true" bodyClass="home">
       
       <SEO title="Home" />
 
-      <Profile />
+      <Section title="Expertise" slug="expertise">
+        <Expertise />
+      </Section>
 
-      <Experience />
+      <Section title="Recent Projects" slug="projects">
+        <Projects />
+      </Section>
 
-      <Expertise />
+      <Section title="Experience" slug="experience">
+        <Experience />
+      </Section>
 
-      <Projects />
-
-      <ContactForm />
+      <Section title="Contact" slug="contact">
+        <Contact />
+      </Section>
 
     </Layout>
   )
