@@ -7,29 +7,28 @@ import parse from "html-react-parser"
 import "@wordpress/block-library/build-style/style.css"
 import "@wordpress/block-library/build-style/theme.css"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const ProjectTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
     fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
     alt: post.featuredImage?.node?.alt || ``,
   }
 
   return (
-    <Layout>
+    <Layout bodyClass="single-project">
       <SEO title={post.title} description={post.excerpt} />
 
       <article
-        className="blog-post"
+        className="project"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+        <header className="entry-header">
+          <h1 className="entry-title" itemProp="headline">{parse(post.title)}</h1>
 
-          <p>{post.date}</p>
+          <div className="entry-meta">{post.date}</div>
 
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
@@ -42,17 +41,12 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         </header>
 
         {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
+          <div className="entry-content" itemProp="articleBody">{parse(post.content)}</div>
         )}
 
-        <hr />
-
-        <footer>
-          <Bio />
-        </footer>
       </article>
 
-      <nav className="post-navigation blog-post-nav">
+      <nav className="post-navigation project-nav">
         <ul
           style={{
             display: `flex`,
@@ -83,19 +77,18 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   )
 }
 
-export default BlogPostTemplate
+export default ProjectTemplate
 
 export const pageQuery = graphql`
-  query BlogPostById(
+  query ProjectPageById(
     # these variables are passed in via createPage.pageContext in gatsby-node.js
     $id: String!
     $previousPostId: String
     $nextPostId: String
   ) {
     # selecting the current post by id
-    post: wpPost(id: { eq: $id }) {
+    post: wpProject(id: { eq: $id }) {
       id
-      excerpt
       content
       title
       date(formatString: "MMMM DD, YYYY")
@@ -106,7 +99,7 @@ export const pageQuery = graphql`
           localFile {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
-                ...GatsbyImageSharpFluid_tracedSVG
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -115,13 +108,13 @@ export const pageQuery = graphql`
     }
 
     # this gets us the previous post by id (if it exists)
-    previous: wpPost(id: { eq: $previousPostId }) {
+    previous: wpProject(id: { eq: $previousPostId }) {
       uri
       title
     }
 
     # this gets us the next post by id (if it exists)
-    next: wpPost(id: { eq: $nextPostId }) {
+    next: wpProject(id: { eq: $nextPostId }) {
       uri
       title
     }

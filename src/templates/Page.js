@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 import parse from "html-react-parser"
+import truncateText from '../utils/truncateText'
 
 // We're using Gutenberg so we need the block styles
 import "@wordpress/block-library/build-style/style.css"
@@ -9,26 +10,27 @@ import "@wordpress/block-library/build-style/theme.css"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ContactForm from '../components/contactForm'
 
-const ProjectTemplate = ({ data: { previous, next, post } }) => {
+const PageTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
     fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
     alt: post.featuredImage?.node?.alt || ``,
   }
 
+  const excerpt = post.content ? truncateText( post.content, 26 ) : ''
+
   return (
-    <Layout>
-      <SEO title={post.title} description={post.excerpt} />
+    <Layout bodyClass="single-page">
+      <SEO title={post.title} description={excerpt} />
 
       <article
-        className="project"
+        className="page"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
-
-          <p>{post.date}</p>
+        <header className="entry-header">
+          <h1 className="entry-title page-title" itemProp="headline">{parse(post.title)}</h1>
 
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
@@ -40,13 +42,20 @@ const ProjectTemplate = ({ data: { previous, next, post } }) => {
           )}
         </header>
 
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
-        )}
+        <div className="entry-content" itemProp="articleBody">
+            {!!post.content && 
+              parse(post.content)
+            }
+
+            { post.slug === `contact` && (
+              <ContactForm />
+            ) }
+
+        </div>
 
       </article>
 
-      <nav className="post-navigation project-nav">
+      <nav className="post-navigation blog-post-nav">
         <ul
           style={{
             display: `flex`,
@@ -59,7 +68,7 @@ const ProjectTemplate = ({ data: { previous, next, post } }) => {
           <li>
             {previous && (
               <Link to={previous.uri} rel="prev">
-                ← {parse(previous.title)}
+                {parse(previous.title)}
               </Link>
             )}
           </li>
@@ -67,7 +76,7 @@ const ProjectTemplate = ({ data: { previous, next, post } }) => {
           <li>
             {next && (
               <Link to={next.uri} rel="next">
-                {parse(next.title)} →
+                {parse(next.title)}
               </Link>
             )}
           </li>
@@ -77,29 +86,28 @@ const ProjectTemplate = ({ data: { previous, next, post } }) => {
   )
 }
 
-export default ProjectTemplate
+export default PageTemplate
 
 export const pageQuery = graphql`
-  query ProjectPageById(
+  query PageById(
     # these variables are passed in via createPage.pageContext in gatsby-node.js
     $id: String!
     $previousPostId: String
     $nextPostId: String
   ) {
     # selecting the current post by id
-    post: wpProject(id: { eq: $id }) {
+    post: wpPage(id: { eq: $id }) {
       id
       content
       title
-      date(formatString: "MMMM DD, YYYY")
-
+      slug
       featuredImage {
         node {
           altText
           localFile {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
-                ...GatsbyImageSharpFluid_tracedSVG
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -108,13 +116,13 @@ export const pageQuery = graphql`
     }
 
     # this gets us the previous post by id (if it exists)
-    previous: wpProject(id: { eq: $previousPostId }) {
+    previous: wpPage(id: { eq: $previousPostId }) {
       uri
       title
     }
 
     # this gets us the next post by id (if it exists)
-    next: wpProject(id: { eq: $nextPostId }) {
+    next: wpPage(id: { eq: $nextPostId }) {
       uri
       title
     }

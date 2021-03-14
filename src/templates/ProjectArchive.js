@@ -26,11 +26,13 @@ const ProjectIndex = ({
   }
 
   return (
-    <Layout>
+    <Layout bodyClass="archive archive-projects">
       <SEO title="All projects" />
 
-      <section id="projects" className="section section__projects">
-        <h2 className="section-title">Projects</h2>
+      <article id="projects" className="section section__projects">
+        <header className="entry-header">
+          <h2 className="section-title">Projects</h2>
+        </header>
         <div className="section-content">
           <div className="post-list post-list__projects">
             {posts.map(post => {
@@ -71,7 +73,7 @@ const ProjectIndex = ({
                               height='20'
                             />
                         </h3>
-                        <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.content }} />                      
+                        <div className="entry-content" dangerouslySetInnerHTML={{ __html: post.excerpt }} />                      
                       </a>
                     </div>
 
@@ -81,15 +83,31 @@ const ProjectIndex = ({
             })}
           </div>
         </div>
-      </section>
+        <footer className="entry"></footer>
+      </article>
 
-      {previousPagePath && (
-        <>
-          <Link to={previousPagePath}>Previous page</Link>
-          <br />
-        </>
-      )}
-      {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+      <nav className="post-navigation blog-post-nav">
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          
+          <li>
+            {previousPagePath && (<Link to={previousPagePath} rel="prev">Previous page</Link>)}
+          </li>
+          
+          <li>
+            {nextPagePath && (<Link to={nextPagePath} rel="next">Next page</Link>)}
+          </li>
+          
+        </ul>
+      </nav>
+
     </Layout>
   )
 }
@@ -97,7 +115,7 @@ const ProjectIndex = ({
 export default ProjectIndex
 
 export const pageQuery = graphql`
-  query WordPressPostArchive( $offset: Int!, $postsPerPage: Int! ) {
+  query WordPressProjectArchive( $offset: Int!, $postsPerPage: Int! ) {
     allWpProject( 
       filter: {
         projectTypes: {
@@ -120,6 +138,7 @@ export const pageQuery = graphql`
         title
         slug
         databaseId
+        excerpt
         acf {
           company
           url
@@ -129,12 +148,7 @@ export const pageQuery = graphql`
             localFile {
               childImageSharp {
                 fluid {
-                  base64
-                  tracedSVG
-                  srcWebp
-                  srcSetWebp
-                  originalImg
-                  originalName
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
