@@ -4,7 +4,7 @@
  *
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
-import React, { useEffect } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import MenuItem from "./menu-item"
 import { SVG } from '../utils/sprites'
@@ -47,7 +47,7 @@ const SocialMenu = () => {
   return (
     <nav id={menu.slug} className={menu.slug}>
       <ul id="primary-menu" className="menu">
-        {menuItems.map( ( menuItem, index ) => {
+        {menuItems.map( ( menuItem ) => {
           return (
             <li
               key={menuItem.databaseId}
@@ -62,6 +62,8 @@ const SocialMenu = () => {
           <div 
             className="js-click" 
             onClick={ handleClick }
+            onKeyDown={handleClick}
+            role="button"
           >
             <SVG 
               id={`print`}

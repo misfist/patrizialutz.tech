@@ -6,7 +6,6 @@
  */
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import MenuItem from "./menu-item"
 
 const MainMenu = () => {
   const data = useStaticQuery(graphql`
@@ -50,9 +49,7 @@ const MainMenu = () => {
     
               return (
                 <li
-                  key={menuItem.databaseId}
-                  id={`menu-item-${menuItem.databaseId}`}
-                  className="menu-item"
+                  {...props}
                 >
                 <Link
                   to={menuItem.url}

@@ -64,7 +64,7 @@ const Header = ( { data } ) => {
     <>
       <Helmet
         bodyAttributes={{
-            class: isSticky ? 'is-stuck' : ''
+            class: isSticky ? `${data.bodyClass} is-stuck` : data.bodyClass
         }}
       />
       <header className={`global-header lazy sticky-wrapper${isSticky ? ' sticky' : ''}`} style={style} loading="lazy" ref={ref}>

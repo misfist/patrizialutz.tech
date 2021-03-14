@@ -65,19 +65,14 @@ const Projects = () => {
 
   if( !posts.length ) {
     return (
-      <section id="projects" className="section section__projects">
-        <h2 className="section-title">Recent Projects</h2>
-        <div className="section-content">
-          Nothing here to see.
-        </div>
-      </section>
+      <>
+        Nothing here to see.
+      </>
     )
   }
 
   return (
-    <section id="projects" className="section section__projects">
-      <h2 className="section-title">Recent Projects</h2>
-      <div className="section-content">
+
         <div className="post-list post-list__projects">
           {posts.map(post => {
             const imageData = post.featuredImage.node.localFile.childImageSharp.fluid
@@ -125,8 +120,7 @@ const Projects = () => {
             )
           })}
         </div>
-      </div>
-    </section>
+
   )
 }
 

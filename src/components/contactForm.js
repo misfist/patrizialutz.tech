@@ -83,7 +83,7 @@ const ContactForm = () => {
             },
         })
         .then(response => {
-            console.log( 'response', response )
+            console.log( 'ContactForm response', response )
 
             formik.setStatus({
                 sent: true,
@@ -91,7 +91,7 @@ const ContactForm = () => {
             })
         })
         .catch(error => {
-            console.error( 'error', error )
+            console.error( 'ContactForm error', error )
 
             formik.setStatus({
                 sent: false,
@@ -101,16 +101,18 @@ const ContactForm = () => {
       },
     })
 
+    const onloadCallback = ( event ) => {
+        console.log( "onloadCallback", event ); 
+    }
+
     return (
-        <section id="contact" className="section section__contact">
-            <h2 className="section-title">Contact</h2>
-            <div className="section-content">
+        <>
             {
                 ( formik.status && formik.status.sent ) ? (
                     formik.status.message
                 ) :
                 (
-                    <form onSubmit={formik.handleSubmit} name="contact-form">
+                    <form onSubmit={formik.handleSubmit} name="contact-form" className="contact-form">
                         <fieldset>
                             <label htmlFor="fullname">Name</label>
                             <input
@@ -175,9 +177,7 @@ const ContactForm = () => {
                                 verifyCallback={(response) => { 
                                     formik.setFieldValue("recaptcha", response ); 
                                 }}
-                                onloadCallback={() => { 
-                                    console.log("done loading!"); 
-                                }}
+                                onloadCallback={onloadCallback}
                             />
                             {formik.touched.recaptcha && formik.errors.recaptcha ? (
                                 <div className="error">{formik.errors.recaptcha}</div>
@@ -189,9 +189,7 @@ const ContactForm = () => {
                     </form> 
                 )
             }
-            </div>
-            
-        </section>
+        </>
     )
 
 }
