@@ -42,7 +42,8 @@ $site__width_4x-large: map-get( $widths, 4x-large );
 $site__width_full: map-get( $widths, full );
 
 $size__site-main: 100%;
-$size__site-sidebar: calc( 100% / 5 );
+$size__site-sidebar: 22rem;
+$size__site-sidebar-sm: 4rem;
 $size__width-content: $site__width_x-large;
 $site__max-width: $site__width_full;
 

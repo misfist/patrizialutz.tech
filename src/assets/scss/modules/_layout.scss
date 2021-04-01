@@ -62,15 +62,24 @@
   margin-bottom: $size__spacing-20;
 }
 
-body[data-panel-visible="true"] {
+@media screen  {
 
-  @include breakpoint( large ) {
-    .main-navigation,
-    .main-content,
-    .global-footer {
-      margin-left: $size__site-sidebar;
-    }    
+  .main-navigation,
+  .main-content,
+  .global-footer {
+    margin-left: $size__site-sidebar-sm;
+  }    
+
+  body[data-panel-visible="true"] {
+
+    @include breakpoint( large ) {
+      .main-navigation,
+      .main-content,
+      .global-footer {
+        margin-left: $size__site-sidebar;
+      }    
+    }
+
   }
 
 }
-

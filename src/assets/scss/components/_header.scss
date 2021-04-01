@@ -61,7 +61,7 @@
 @media screen {
     .global-header {
         height: 100%;
-        width: $size__spacing-16;
+        width: $size__site-sidebar-sm;
         position: fixed;
         z-index: +2;
         top: 0;
@@ -80,7 +80,6 @@
         display: none;
     }
 }
-
 
 /* Nav Trigger */
 .sidebar-toggle {
