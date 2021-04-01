@@ -104,6 +104,10 @@ body[data-nav-stuck="true"] .main-navigation {
         transition: all 0.4s ease;
         flex-direction: column;
 
+        li {
+            margin-bottom: .75rem;
+        }
+
         a {
             color: $color__white;
         }
