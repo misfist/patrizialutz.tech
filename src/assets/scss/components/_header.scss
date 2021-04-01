@@ -1,27 +1,3 @@
-.global-header {
-    padding: 0;
-    margin: 0;
-    max-width: $site__max-width;
-
-    /* Background Image */
-    background-color: $color__primary;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-image: linear-gradient(
-        rgba($color__primary, 0.45), 
-        rgba($color__primary, 0.45)
-    );
-
-    transition: all 2s linear;
-}
-
-.sticky-wrapper {
-    position: relative;
-    // height: 3rem; /* We need to change this value */
-  }
-  
   .sticky {
     .sticky-inner {
         position: fixed;
@@ -31,19 +7,29 @@
         z-index: 1;
       }
   }
-  
+
+/**
+ * Displays as sidebar on large+ screens
+ */
+.global-header {
+    /* Background Image */
+    background-color: $color__black;
+    z-index: +2;
+}
+
+
 .main-heading {
     margin-top: 0;
-    padding: $size__spacing-8;
-    color: $color__white;
+    padding: 0;
+    color: rgba( $color__white, 0.8 );
     text-align: center;
 
     text-shadow: 0 1px 0 $color__black;
 
     .site-title {
         margin-top: 0;
-        padding-top: $size__spacing-6;
-        font-size: $font__size-xl;
+        padding-top: $size__spacing-6 $size__spacing-6;
+        font-size: $font__size-large;
         font-weight: $font__weight-normal;
         line-height: $font__line-height-none;
 
@@ -53,6 +39,7 @@
     }
 
     .site-description {
+        display: none;
         font-size: $font__size-normal;
         font-family: $font__main;
         font-weight: $font__weight-normal;
@@ -60,39 +47,192 @@
     }
 
     .avatar {
+        width: 40px;
+        height: 40px;
         border: 2px solid $color__white;
         border-radius: 50%;
         box-shadow: 0 1px 0 $color__black;
         background-color: $color__white;
+        // background-color: $color__white;
     }
 
-    @include breakpoint( 2x-large ) {
-        padding: $size__spacing-24 $size__spacing-0;
+}
 
-        .site-title {
-            font-size: $font__size-2xl;
-        }
+@media screen {
+    .global-header {
+        height: 100%;
+        width: $size__spacing-16;
+        position: fixed;
+        z-index: +2;
+        top: 0;
+        left: 0;
+        background-color: $color__black;
+        // overflow-x: hidden;
+        overflow: hidden;
+        padding-top: 2rem;
+        transition: all 0.4s ease;
+    }
 
-        .site-title {}
-    
-        .site-description {
-            font-size: $font__size-medium;
-            line-height: $font__line-height-tight;
-            
-        }
+    .site-title {
+        display: none;
+    }
+    .site-description {
+        display: none;
     }
 }
 
-/* Stop the jump */
-.is-stuck {
-    .main-content {
-        padding-top: calc( 64px + 24px );
-    }
 
-    @include breakpoint(mobile) {
-        .main-content {
-            // padding-top: calc( 48px + 24px );
-            padding-top: 48px;
+/* Nav Trigger */
+.sidebar-toggle {
+  display: none;
+
+  @include breakpoint( large ) {
+
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      position: relative;
+      background: transparent;
+      border: none;
+      vertical-align: middle;
+      // padding: 10px;
+      padding: 0;
+      margin: 0 0 2rem 1rem;
+      cursor: pointer;
+      &:focus {
+          outline: 0;
+      }
+      &:hover {
+          .button-icon,
+          .button-icon:before,
+          .button-icon:after {
+              background: $color__white;
+          }
+      }
+      &:before {
+          content: '';
+          opacity: 0;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          background: transparent;
+          transform: translate(-50%, -50%);
+          transition: all 0.4s ease;
+      }
+      .button-icon {
+          display: block;
+          position: relative;
+          &:before,
+          &:after {
+              content: '';
+              position: absolute;
+              left: 0;
+          }
+          &:before {
+              top: -8px;
+          }
+          &:after {
+              bottom: -8px;
+          }
+      }
+      .button-icon,
+      .button-icon:before,
+      .button-icon:after {
+        width: 100%;
+        height: 4px;
+        background: $color__white;
+        transition: all 0.4s ease;
+      }
+  }
+
+}
+
+body[data-panel-visible="true"] {
+
+  @include breakpoint( large ) {
+
+    .sidebar-toggle {
+        &:before {
+            opacity: 1;
+            width: 50px;
+            height: 50px;
+            // background: $color__secondary;
+        }
+        .button-icon {
+            background: transparent;
+            &:before {
+                top: 0;
+                transform: rotate(225deg);
+            }
+            &:after {
+                bottom: 0;
+                transform: rotate(-225deg);
+            }
         }
     }
+
+    .global-header {
+      width: $size__site-sidebar;
+    }
+
+    .main-heading {
+        padding-right: 2rem;
+        padding-left: 2rem;
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            margin-bottom: .5rem;
+            background-color: rgba( $color__white, 0.8 );
+            border-color: rgba( $color__white, 0.8 );
+        }
+    
+        .menu {
+          flex-direction: row;
+
+            a {
+                color: rgba( $color__white, 0.8 );
+
+                &:hover {
+                    color: $color__white;                    
+                }
+            }
+
+            .menu-item {
+                &:hover {
+                    svg {
+                        fill: $color__white;
+                        color: $color__white;
+                    }
+                }
+            }
+
+            svg {
+                fill: rgba( $color__white, 0.8 );
+                color: rgba( $color__white, 0.8 );
+            }
+            
+        }
+    }
+
+    .site-title {
+      display: block;
+        a {
+            color: rgba( $color__white, 0.8 );
+
+            &:hover {
+                color: $color__white;                    
+            }
+        }
+    }
+
+    .site-description {
+        display: block;
+        color: rgba( $color__white, 0.8 );
+    }
+
+  }
 }

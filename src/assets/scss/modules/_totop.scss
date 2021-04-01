@@ -1,0 +1,38 @@
+.to-the-top-wrapper {
+	$scrollLength: 100vh;
+	text-decoration: none;
+
+	position: absolute;
+	top: $scrollLength;
+	right: 3rem;
+	bottom: -5em;
+	width: 3em;
+	pointer-events: none;
+
+	.to-the-top-link {
+		display: inline-block;
+		position: fixed;
+		position: sticky;
+		top: calc(100vh - 5rem);
+		text-decoration: none;
+		font-size: 2rem;
+		line-height: 3rem;
+		text-align: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		background-color: rgba( $color__black, .5 );
+		padding: 0.25rem;
+		color: $color__white;
+		pointer-events: all;
+		border-bottom: none;
+
+		&:hover {
+			color: $color__secondary;
+		}
+	}
+
+	.to-the-top-short {
+		display: none;
+	}
+}

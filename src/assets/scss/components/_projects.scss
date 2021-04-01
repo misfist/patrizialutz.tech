@@ -42,7 +42,7 @@
             }
 
             .overlay {
-                transition: all .3s linear;
+                transition: all 0.4s linear;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -63,7 +63,7 @@
             .entry-title {
                 font-size: $font__size-medium;
                 line-height: $font__line-height-tight;
-                transition: .2s;
+                transition: .4s;
                 
                 &:after {
                     margin-left: auto;
@@ -74,7 +74,7 @@
                     display: block;
                     border-bottom: 1px solid transparent;
                     width: 0;
-                    transition: width .2s linear;
+                    transition: width .4s linear;
                 }
 
                 svg {

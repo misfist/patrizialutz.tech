@@ -83,7 +83,6 @@ a:focus {
   text-decoration: none;
 }
 
-
 @include breakpoint( small ) {
   blockquote {
     padding: 0 0 0 $size__spacing-4;
@@ -95,7 +94,9 @@ a:focus {
   }
 }
 
-
+.screen-reader-text {
+  @include visually-hidden;
+}
 
 .is-style-rounded {
   img {

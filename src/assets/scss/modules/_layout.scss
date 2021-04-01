@@ -15,6 +15,13 @@
     max-width: $site__width_x-large;
 }
 
+.main-navigation,
+.main-content,
+.global-footer {
+  transition: margin-left .4s;
+  // padding: 20px;
+}
+
 .main-content .section {
   scroll-snap-margin-top:  calc( 96px + 1rem );
   scroll-margin-top: calc( 96px + 1rem );
@@ -55,6 +62,15 @@
   margin-bottom: $size__spacing-20;
 }
 
-footer {
-    padding: $size__spacing-6 0;
+body[data-panel-visible="true"] {
+
+  @include breakpoint( large ) {
+    .main-navigation,
+    .main-content,
+    .global-footer {
+      margin-left: $size__site-sidebar;
+    }    
+  }
+
 }
+
