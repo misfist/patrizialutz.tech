@@ -14,7 +14,7 @@ const Home = ({ data }) => {
   return (
     <Layout isHomePage="true" bodyClass="home">
       
-      <SEO title="Home" />
+      <SEO title="Profile, Experience, Expertise & Projects" />
 
       <Section title="Patrizia Lutz" slug="profile">
         <Profile />
