@@ -16,6 +16,10 @@ const Home = ({ data }) => {
       
       <SEO title="Home" />
 
+      <Section title="Patrizia Lutz" slug="profile">
+        <Profile />
+      </Section>
+
       <Section title="Expertise" slug="expertise">
         <Expertise />
       </Section>

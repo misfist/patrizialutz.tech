@@ -4,7 +4,7 @@
  *
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
-import React from "react"
+import React from 'react';
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 const MainMenu = () => {
@@ -33,7 +33,7 @@ const MainMenu = () => {
   const menuItems = menu.menuItems.nodes
 
   return (
-    <nav id={menu.slug} className="main-navigation js-sticky-nav sticky-inner">
+    <nav id={menu.slug} className="main-navigation">
         {menuItems && 
           <ul id="primary-menu" className="menu">
             {menuItems.map( ( menuItem, index ) => {

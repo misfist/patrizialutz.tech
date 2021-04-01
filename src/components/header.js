@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby'
 // import Img from 'gatsby-image'
 import avatar from '../assets/img/sneaky-cat-transparent.png'
@@ -8,24 +8,11 @@ import MainMenu from './menu'
 import SocialMenu from './menu-social'
 
 const Header = ( { data } ) => {
-  const [isSticky, setSticky] = useState( false );
-  const ref = useRef( null );
+  const [panelIsOpen, setPanelIsOpen] = useState(false);
 
-  const handleScroll = () => {
-    const offset = document.querySelector( '.main-heading' ).offsetHeight;
-
-    if ( ref.current ) {
-      setSticky( ref.current.getBoundingClientRect().top <= -offset );
-    } 
-  };
-
-  useEffect(() => {
-    window.addEventListener( 'scroll', handleScroll );
-
-    return () => {
-      window.removeEventListener( 'scroll', handleScroll );
-    };
-  }, []);
+  const sidePanel = ( event ) => {
+    setPanelIsOpen( !panelIsOpen );
+  }
 
   const {
     wp: {
@@ -64,19 +51,26 @@ const Header = ( { data } ) => {
     <>
       <Helmet
         bodyAttributes={{
-            class: isSticky ? `${data.bodyClass} is-stuck` : data.bodyClass
+          'data-panel-visible': panelIsOpen ? true : false,
         }}
       />
-      <header className={`global-header lazy sticky-wrapper${isSticky ? ' sticky' : ''}`} style={style} loading="lazy" ref={ref}>
+      <header className={`global-header`}>
+        <button 
+          className="sidebar-toggle"
+          onClick={sidePanel}
+        >
+          <span className="button-icon"></span>
+          <span className="screen-reader-text">Open</span>
+        </button>
         <div className="main-heading">
-          <h1 className="site-title">
-            <a href={process.env.WEBSITE_URL}>{parse(title)}</a>
-          </h1>
           <img 
             src={avatar} 
             alt="Avatar"
             className="avatar"
           />
+          <h1 className="site-title">
+            <a href={process.env.WEBSITE_URL}>{parse(title)}</a>
+          </h1>
           <div
             className="site-description"
             dangerouslySetInnerHTML={{ __html: description }}
@@ -88,8 +82,8 @@ const Header = ( { data } ) => {
           <SocialMenu />
         </div>
 
-        <MainMenu />
       </header>
+      <MainMenu />
     </>
   )
 }

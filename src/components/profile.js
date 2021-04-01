@@ -19,11 +19,10 @@ const Profile = () => {
   }
   `)
   return (
-    <section id="profile" className="section section__profile">
-      <h2 className="section-title">{ parse( data.wpPage.title ) }</h2>
+    <>
       <div className="section-content" dangerouslySetInnerHTML={{ __html: data.wpPage.content }} />
       <SocialMenu />
-    </section>
+    </>
   )
 }
 
