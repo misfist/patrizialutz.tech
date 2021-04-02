@@ -10,7 +10,7 @@ const Footer = () => {
         {` `}
         <a href="https://www.gatsbyjs.com" target="_blank" rel="noreferrer">Gatsby</a>
         {` `}
-        And <a href="https://wordpress.org/" target="_blank" rel="noreferrer">WordPress</a>  
+        and <a href="https://wordpress.org/" target="_blank" rel="noreferrer">WordPress</a>  
       </div>
       <SVGSource />
    </footer>
