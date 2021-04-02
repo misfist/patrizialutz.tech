@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 // import Img from 'gatsby-image'
 import avatar from '../assets/img/sneaky-cat-transparent.png'
 import parse from 'html-react-parser'
@@ -63,13 +63,21 @@ const Header = ( { data } ) => {
           <span className="screen-reader-text">Open</span>
         </button>
         <div className="main-heading">
-          <img 
-            src={avatar} 
-            alt="Avatar"
-            className="avatar"
-          />
+          <Link
+            to={`/`}
+          >
+            <img 
+              src={avatar} 
+              alt="Avatar"
+              className="avatar"
+            />
+          </Link>
           <h1 className="site-title">
-            <a href={process.env.WEBSITE_URL}>{parse(title)}</a>
+            <Link
+              to={`/`}
+            >
+                {parse(title)}
+            </Link>
           </h1>
           <div
             className="site-description"
