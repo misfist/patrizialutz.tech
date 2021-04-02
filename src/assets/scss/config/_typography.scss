@@ -14,14 +14,14 @@ $font__size-base-small: calc( #{$font__size-base} * .8 );
 $font__size-base-large: calc( #{$font__size-base} * 1.2 );
 
  $font__sizes: (
-     small: .8rem,
-     normal: 1rem,
-     medium: 1.25rem,
-     intro: 1.8rem, // slightly bigger
-     entry-header: 2.4rem, //38.4
-     large: 2rem, // h3
-     xl: 3rem, // h2
-     2xl: 4rem, // h1 64px
+     small: .9em,
+     normal: 1em,
+     medium: 1.25em,
+     intro: 1.8em, // slightly bigger
+     entry-header: 2.4em, //38.4
+     large: 2em, // h3
+     xl: 3em, // h2
+     2xl: 4em, // h1 64px
  );
 
  $font__size-entry-header: map-get( $font__sizes, entry-header );
